@@ -16,7 +16,13 @@ CREATE TABLE Usuario(
     nome varchar(100) NOT NULL,
     # o nome do usuário no sistema, recomenda-se que seja o nome verdadeiro dele, e não pode ser nulo.
     
-    sexo varchar(5),
+    email varchar(100) NOT NULL,
+    senha varchar(100) NOT NULL,
+    
+    saldo decimal(65,2),
+    # o saldo indica a renda atual de determinado usuário que constantemente vai ser alterado com o uso do site.
+    
+    sexo varchar(15),
     # no site só vai ter a opção dele escolher entre M, F ou Prefiro Não Informar, aí o site vai entrar em um IF e com isso o próprio site 
     # vai preencher esse atributo... tipo desse jeito:
     /*
@@ -26,14 +32,11 @@ CREATE TABLE Usuario(
 	elif caixinhaDeSelecao == "F":
 		Usuario.Sexo = "F"
 	else:
-		Usuario.sexo = "Não Informado"
+		Usuario.sexo = "Nao Informado"
 	
     */
     
-    cpf char(20) unique NOT NULL,
-    # cpf como atributo único por questões lógicas, não tem como ter duas pessoas com o mesmo CPF.
-    # CPF não seria melhor como chave primária? Acho que não, afinal, o id tem todo o lance de auto_incremento e tudo mais, acho que vai facilitar
-    # para o desenvolvimento do site do que se fosse usando cpf's.
+    
     
     ativo tinyint(1) default 1,
     # Acho uma boa usarmos esse lance de ativo pois vai ajudar na hora de querermos excluir um registro, para caso dê biziu é só colocar o ativo
@@ -193,39 +196,58 @@ CREATE TABLE TransacaoRecorrente(
 
 
 /* ----------------  I N S E R T S  -------------------- */
-INSERT INTO Usuario (id, nome, sexo, cpf, ativo, dataNascimento) VALUES
-(1, 'Ana Souza', 'F', '11111111111', 1, '2004-03-18'),
-(2, 'Bruno Lima', 'M', '22222222222', 1, '2002-11-07'),
-(3, 'Carla Mendes', 'F', '33333333333', 0, '1999-06-25');
 
-INSERT INTO Categoria (id, nome, ativo) VALUES
-(1, 'Alimentacao', 1),
-(2, 'Lazer', 1),
-(3, 'Transporte', 1),
-(4, 'Saude', 1),
-(5, 'Educação', 1),
-(6, 'Moradia', 1),
-(7, 'Salario', 1),
-(8, 'Investimento', 1),
-(9, 'Imprevistos', 0),
-(10, 'Outros', 1);
 
-INSERT INTO TransacaoEsporadica (id, nome, descricao, dataDaTransacao, ativo, valor, tipo, categoria_id, usuario_id) VALUES
-(1, 'Mercado da semana', 'Compras de alimentos e itens básicos', '2026-06-01', 1, 187.45, 'Gasto', 1, 1),
-(2, 'Salario extra', 'Bico realizado no fim de semana', '2026-06-02', 1, 350.00, 'Ganho', 7, 1),
-(3, 'Cinema', 'Saída com amigos', '2026-06-03', 1, 42.00, 'Gasto', 2, 2),
-(4, 'Consulta medica', 'Consulta particular de rotina', '2026-06-04', 1, 180.00, 'Gasto', 4, 2),
-(5, 'Venda usada', 'Venda de um fone antigo', '2026-06-05', 1, 90.00, 'Ganho', 10, 3),
-(6, 'Uber aeroporto', 'Deslocamento urgente', '2026-06-06', 0, 63.80, 'Gasto', 3, 3),
-(7, 'Curso online', 'Compra de acesso a curso', '2026-06-07', 1, 129.90, 'Gasto', 5, 1),
-(8, 'Prêmio', 'Premiação de competição', '2026-06-08', 1, 500.00, 'Ganho', 10, 2);
+/* ----------------  U S U A R I O  -------------------- */
+INSERT INTO Usuario (nome, email, senha, saldo, sexo, ativo, dataNascimento) VALUES
+('Ana Clara Souza', 'ana.clara@email.com', 'senha123', 2450.75, 'F', 1, '2007-04-18'),
+('Bruno Henrique Lima', 'bruno.lima@email.com', 'senha123', 1320.40, 'M', 1, '2006-09-22'),
+('Camila Rocha Alves', 'camila.alves@email.com', 'senha123', 3890.00, 'F', 1, '2008-01-10'),
+('Diego Santos Pereira', 'diego.pereira@email.com', 'senha123', 980.15, 'M', 1, '2005-12-03'),
+('Eduarda Martins Costa', 'eduarda.costa@email.com', 'senha123', 560.90, 'F', 1, '2007-07-27'),
+('Felipe Nogueira Ramos', 'felipe.ramos@email.com', 'senha123', 2100.00, 'M', 1, '2006-03-14'),
+('Gabriela Ferreira Silva', 'gabriela.silva@email.com', 'senha123', 745.30, 'F', 1, '2008-11-30'),
+('Henrique Cardoso Melo', 'henrique.melo@email.com', 'senha123', 4150.60, 'M', 1, '2005-05-06'),
+('Isabela Oliveira Dias', 'isabela.dias@email.com', 'senha123', 1785.25, 'F', 1, '2007-02-21'),
+('João Victor Barbosa', 'joao.barbosa@email.com', 'senha123', 2999.99, 'M', 1, '2006-08-09');
 
-INSERT INTO TransacaoRecorrente (id, nome, descricao, diaVencimento, ativo, valor, tipo, categoria_id, usuario_id) VALUES
-(1, 'Mensalidade academia', 'Plano mensal da academia', 5, 1, 89.90, 'Gasto', 4, 1),
-(2, 'Internet', 'Serviço de internet residencial', 10, 1, 119.99, 'Gasto', 6, 1),
-(3, 'Salario fixo', 'Salario mensal do trabalho', 30, 1, 2500.00, 'Ganho', 7, 2),
-(4, 'Streaming', 'Assinatura de plataforma de filmes', 15, 1, 24.90, 'Gasto', 2, 2),
-(5, 'Poupanca', 'Transferencia mensal para reserva', 20, 1, 300.00, 'Gasto', 8, 3),
-(6, 'Bolsa de estudos', 'Valor mensal recebido', 12, 1, 600.00, 'Ganho', 5, 3),
-(7, 'Aluguel', 'Pagamento do aluguel', 31, 1, 950.00, 'Gasto', 6, 1),
-(8, 'Assinatura app', 'Ferramenta de produtividade', 28, 0, 15.90, 'Gasto', 10, 2);
+/* ----------------  C A T E G O R I A  -------------------- */
+INSERT INTO Categoria (nome, ativo) VALUES
+('Alimentação', 1),
+('Moradia', 1),
+('Transporte', 1),
+('Saúde', 1),
+('Educação', 1),
+('Lazer', 1),
+('Assinaturas', 1),
+('Trabalho', 1),
+('Investimentos', 1),
+('Emergência', 1);
+
+/* ----------------  T R A N S A C A O   E S P O R A D I C A  -------------------- */
+INSERT INTO TransacaoEsporadica
+(nome, descricao, dataDaTransacao, ativo, valor, tipo, categoria_id, usuario_id) VALUES
+('Venda de livro', 'Venda de um livro usado para um colega.', '2026-07-01', 1, 45.00, 'Ganho', 8, 1),
+('Compra de lanche', 'Lanche da tarde na cantina.', '2026-07-02', 1, 18.50, 'Gasto', 1, 2),
+('Freela de edição', 'Edição de vídeo para um projeto curto.', '2026-07-03', 1, 180.00, 'Ganho', 8, 3),
+('Consulta médica', 'Consulta particular com clínico geral.', '2026-07-04', 1, 120.00, 'Gasto', 4, 4),
+('Presente recebido', 'Dinheiro recebido em presente de aniversário.', '2026-07-05', 1, 200.00, 'Ganho', 10, 5),
+('Material escolar', 'Compra de caderno e canetas.', '2026-07-06', 1, 67.90, 'Gasto', 5, 6),
+('Ingresso cinema', 'Saída com amigos no cinema.', '2026-07-07', 1, 32.00, 'Gasto', 6, 7),
+('Bico de evento', 'Trabalho rápido em evento escolar.', '2026-07-08', 1, 150.00, 'Ganho', 8, 8),
+('Reembolso', 'Reembolso de compra cancelada.', '2026-07-09', 1, 89.99, 'Ganho', 10, 9),
+('Conserto do fone', 'Troca de cabo e ajuste do fone.', '2026-07-10', 1, 55.00, 'Gasto', 4, 10);
+
+/* ----------------  T R A N S A C A O   R E C O R R E N T E  -------------------- */
+INSERT INTO TransacaoRecorrente
+(nome, descricao, diaVencimento, ativo, valor, tipo, categoria_id, usuario_id) VALUES
+('Mensalidade escolar', 'Pagamento fixo da mensalidade.', 5, 1, 450.00, 'Gasto', 5, 1),
+('Internet', 'Plano de internet residencial.', 10, 1, 99.90, 'Gasto', 7, 2),
+('Bolsa estágio', 'Valor mensal recebido pelo estágio.', 15, 1, 800.00, 'Ganho', 8, 3),
+('Academia', 'Plano mensal da academia.', 12, 1, 79.90, 'Gasto', 4, 4),
+('Aluguel', 'Pagamento do aluguel da casa.', 8, 1, 1200.00, 'Gasto', 2, 5),
+('Mesada', 'Valor fixo recebido da família.', 20, 1, 300.00, 'Ganho', 10, 6),
+('Streaming', 'Assinatura de serviço de streaming.', 18, 1, 27.90, 'Gasto', 7, 7),
+('Transporte fixo', 'Gasto mensal com deslocamento.', 25, 1, 150.00, 'Gasto', 3, 8),
+('Renda fixa', 'Valor mensal de renda por serviço.', 30, 1, 950.00, 'Ganho', 8, 9),
+('Plano de saúde', 'Mensalidade do plano de saúde.', 3, 1, 210.00, 'Gasto', 4, 10);
