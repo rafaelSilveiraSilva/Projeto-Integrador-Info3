@@ -71,52 +71,26 @@ $ln = $rs->fetch_assoc();
     </nav>
 
     <div class="container-fluid p-4">
-        <div class="row">
 
-            <div class="col-6">
-                <h4><b>Saldo Atual</b></h4>
-                <h4><?= $ln["saldo"] ?> R$</h4>
+        <div class="row ">
+            <div class="col ">
+                <a href="inicialUsuario.php" class="btn btn-danger mb-4">Voltar</a>
             </div>
-
-            <div class="col-6 text-center">
-                <h4><b>Movimentações Recentes</b></h4>
-                <h4><i>(úitimas dez)</i></h4>
-            </div>
-
         </div>
 
-
-
-        <div class="row mt-5">
-            
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <a href="#" class="btn btn-primary">Adicionar GANHO</a>
-                    </div>
-                </div>
-                
-                <div class="row mt-5">
-                    <div class="col">
-                        <a href="#" class="btn btn-primary">Adicionar GASTO</a>
-                    </div>
-                </div>
-
-                <div class="row mt-5">
-                    <div class="col">
-                        <a href="#" class="btn btn-secondary">Adicionar GANHO RECORRENTE</a>
-                    </div>
-                </div>
-
-                <div class="row mt-5">
-                    <div class="col">
-                        <a href="#" class="btn btn-secondary">Adicionar GASTO RECORRENTE</a>
-                    </div>
-                </div>
+        <div class="row  align-items-end text-center">
+            <div class="col-6  ">
+                <h4><b>Histórico completo</b></h4>
+            </div>
+            <div class="col-4  text-end">
+                <h4><b>Saldo Atual</b></h4>
 
             </div>
+            <div class="col-2 "></div>
+        </div>
 
-            <div class="col">
+        <div class="row ">
+            <div class="col-6 ">
                 <table class="table table-striped table-bordered text-center">
                     <tr>
                         <th>Nome</th>
@@ -127,24 +101,27 @@ $ln = $rs->fetch_assoc();
                     $rs = $mysql->query("SELECT te.nome, te.valor
                                          FROM transacaoEsporadica as te
                                         WHERE te.usuario_id = $_SESSION[usuario]
-                                        LIMIT 10
+                                        
                                         ");
 
-                    foreach ($rs as $ln): ?>
+                    foreach ($rs as $line): ?>
 
                         <tr>
-                            <td><?= $ln["nome"] ?></td>
-                            <td><?= $ln["valor"] ?> R$</td>
+                            <td><?= $line["nome"] ?></td>
+                            <td><?= $line["valor"] ?> R$</td>
                         </tr>
 
                     <?php endforeach ?>
 
                 </table>
-                <center>
-                <a href="historicoCompleto.php" class="btn btn-warning text-center">Acessar histórico completo</a>
-                </center>
             </div>
+            <div class="col-4  text-end">
+
+                <h4><?= $ln["saldo"] ?> R$</h4>
+            </div>
+            <div class="col-2 "></div>
         </div>
+
 
 
     </div>

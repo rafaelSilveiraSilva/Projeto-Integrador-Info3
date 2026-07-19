@@ -1,51 +1,33 @@
 <?php
+$mysql = new mysqli(
+    "localhost",
+    "root",
+    "",
+    "pi_iii",
+    3306
+);
 
 if (sizeof($_POST) > 0) {
 
 
-    $mysql = new mysqli(
-        "localhost",
-        "root",
-        "",
-        "pi_iii",
-        3306
-    );
 
-    $cpf = $_POST["cpf"];
-    $dataNascimento = $_POST["dataNascimento"];
     $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    $saldo = $_POST["saldo"];
+    if ($saldo == null) {
+        $saldo = 0.00;
+    }
+    $dataNascimento = $_POST["dataNascimento"];
     $sexo = $_POST["sexo"];
 
 
 
 
-    $mysql->query("INSERT INTO usuario(cpf, dataNascimento, nome, sexo) VALUES('$cpf', '$dataNascimento', '$nome', '$sexo')");
+    $mysql->query("INSERT INTO usuario(nome, email, senha, saldo, dataNascimento, sexo) VALUES('$nome', '$email', '$senha', '$saldo', '$dataNascimento', '$sexo')");
 
 
-    if (isset($_POST['cpf']) && strlen($_POST['cpf']) > 0) {
 
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-
-        $_SESSION['cpf'] = $_POST['cpf'];
-
-        $rs = $mysql->query("SELECT cpf, id FROM usuario WHERE cpf = '$_SESSION[cpf]'");
-        // or die($mysql->error);
-        $ln = $rs->fetch_assoc();
-        $contador = $rs->num_rows;
-
-        if ($contador == 0) {
-            $erro[] = "Este CPF não pertence a nenhum usuário cadastrado!";
-        } else {
-
-            $_SESSION['usuario'] = $ln['id'];
-            header("Location: inicialUsuario.php");
-
-
-            exit;
-        }
-    }
 
     header("Location: index.php");
 
@@ -74,7 +56,9 @@ if (sizeof($_POST) > 0) {
 
         <form method="POST" action="cadastro.php">
             <p>Nome (obrigatório) <input type="text" name="nome" class="form-control" required></p>
-            <p>CPF (obrigatório) <input type="text" name="cpf" class="form-control" required></p>
+            <p>E-mail (obrigatório) <input type="text" name="email" class="form-control" required></p>
+            <p>Senha (obrigatório) <input type="text" name="senha" class="form-control" required></p>
+            <p>Saldo <input type="text" name="saldo" class="form-control"></p>
             <p>Data de Nacimento <input type="text" name="dataNascimento" class="form-control"></p>
             <p>Sexo <input type="text" name="sexo" class="form-control"></p>
             <p>
