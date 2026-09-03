@@ -19,7 +19,13 @@ if (sizeof($_POST) > 0) {
         $saldo = 0.00;
     }
     $dataNascimento = $_POST["dataNascimento"];
+
+
     $sexo = $_POST["sexo"];
+
+    if ($sexo == "") {
+        $sexo = "Indefinido";
+    }
 
 
 
@@ -60,7 +66,14 @@ if (sizeof($_POST) > 0) {
             <p>Senha (obrigatório) <input type="text" name="senha" class="form-control" required></p>
             <p>Saldo <input type="text" name="saldo" class="form-control"></p>
             <p>Data de Nacimento <input type="text" name="dataNascimento" class="form-control"></p>
-            <p>Sexo <input type="text" name="sexo" class="form-control"></p>
+            <p>Sexo:
+                <select name="sexo" class="form-select">
+                    <option value="I" selected></option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+
+                </select>
+            </p>
             <p>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
 

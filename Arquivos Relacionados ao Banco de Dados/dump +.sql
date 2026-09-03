@@ -22,7 +22,7 @@ CREATE TABLE Usuario(
     saldo decimal(65,2),
     # o saldo indica a renda atual de determinado usuário que constantemente vai ser alterado com o uso do site.
     
-    sexo varchar(15),
+    sexo varchar(15) DEFAULT 'Indefinido',
     # no site só vai ter a opção dele escolher entre M, F ou Prefiro Não Informar, aí o site vai entrar em um IF e com isso o próprio site 
     # vai preencher esse atributo... tipo desse jeito:
     /*

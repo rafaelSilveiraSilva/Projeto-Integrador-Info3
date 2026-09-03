@@ -30,7 +30,7 @@ $ln = $rs->fetch_assoc();
             <div class="d-flex order-lg-last">
 
 
-                <a href="#" class="btn d-flex align-items-center">
+                <a href="usuario.php" class="btn d-flex align-items-center">
 
 
 
