@@ -65,7 +65,7 @@ if (sizeof($_POST) > 0) {
             <p>E-mail (obrigatório) <input type="text" name="email" class="form-control" required></p>
             <p>Senha (obrigatório) <input type="text" name="senha" class="form-control" required></p>
             <p>Saldo <input type="text" name="saldo" class="form-control"></p>
-            <p>Data de Nacimento <input type="text" name="dataNascimento" class="form-control"></p>
+            <p>Data de Nacimento <input type="date" name="dataNascimento" class="form-control"></p>
             <p>Sexo:
                 <select name="sexo" class="form-select">
                     <option value="I" selected></option>
@@ -75,7 +75,7 @@ if (sizeof($_POST) > 0) {
                 </select>
             </p>
             <p>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-warning">Cadastrar</button>
 
             </p>
             <p>

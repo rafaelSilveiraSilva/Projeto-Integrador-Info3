@@ -27,10 +27,10 @@
     } else {
         $id = $ln['id'];
         $nome = $_POST["nome"];
-        $sexo = $_POST["sexo"];
+        
 
 
-        $rs = $mysql->query("UPDATE usuario SET nome='$nome', sexo='$sexo' WHERE id = $id");
+        $rs = $mysql->query("UPDATE usuario SET nome='$nome' WHERE id = $id");
         $msg = "Registro atualizado";
     }
     ?>
@@ -55,14 +55,7 @@
 
 
             <p>Nome: <input value="<?= $infoUsuario["nome"] ?>" type="text" name="nome" class="form-control"></p>
-            <p>Sexo:
-                <select name="sexo" class="form-select">
-                    <option <?php if ($infoUsuario["sexo"] == "M"): echo ("selected"); ?> <?php endif ?> value="<?= $ln["sexo"] ?>"><?= $ln["sexo"] ?></option>
-                    <option <?php if ($infoUsuario["sexo"] == "F"): echo ("selected"); ?> <?php endif ?> value="<?= $ln["sexo"] ?>"><?= $ln["sexo"] ?></option>
-                    <option <?php if ($infoUsuario["sexo"] == "Indefinido"): echo ("selected"); ?> <?php endif ?> value="<?= $ln["sexo"] ?>"><?= $ln["sexo"] ?></option>
-
-                </select>
-            </p>
+            
             <input type="hidden" name="id" value="<?= $infoUsuario["id"] ?>">
             <button type="submit" class="btn btn-warning"> Salvar </button>
         </form>

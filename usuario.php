@@ -72,24 +72,19 @@ $ln = $rs->fetch_assoc();
 
     <div class="container-fluid p-4">
         <div class="row ">
-            <div class="col  text-center">
-                <img
-                    class="img-fluid"
-                    width="200"
-                    src="https://img.magnific.com/vetores-premium/ilustracao-plana-vetorial-em-escala-de-cinza-avatar-perfil-de-usuario-icone-de-pessoa-imagem-de-perfil-de-silhueta-neutra-de-genero-adequado-para-perfis-de-midia-social-icones-protetores-de-tela-e-como-um-modelo-x9xa_719432-2191.jpg?semt=ais_hybrid&w=740&q=80">
-            </div>
+            
 
-            <div class="col  ">
+            <div class="col-10  ">
                 <h1><b>Nome: </b><?= $ln['nome'] ?></h1>
                 <h2><b>Email: </b><?= $ln['email'] ?></h2>
                 <h2><b>Gênero: </b><?= $ln['sexo'] ?></h2>
             </div>
 
-            <div class="col  d-flex justify-content-center align-items-center">
+            <div class="col-2 text-end">
                 <a
-                    class="btn btn-warning"
+                    class="btn btn-warning mt-3"
                     href="atualizaDadosUsuario.php">
-                    <b>Editar dados</b>
+                    <b>Mudar nome</b>
                 </a>
             </div>
         </div>

@@ -36,7 +36,8 @@ if (sizeof($_POST) > 0) {
         }
 
         if (count($erro) == 0 || !isset($erro)) {
-            echo "<script>alert('Login afetuado!'); location.href='inicialUsuario.php';</script>";
+            header("Location: inicialUsuario.php");
+            exit();
         }
     }
 }
@@ -63,7 +64,9 @@ if (sizeof($_POST) > 0) {
         <h1 class="text-center">Login</h1>
 
         <form method="POST" action="login.php">
-            <p>Informe seu email (obrigatório) <input type="text" name="email" class="form-control" value="<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];} ?>" required></p>
+            <p>Informe seu email (obrigatório) <input type="text" name="email" class="form-control" value="<?php if (isset($_SESSION['email'])) {
+                                                                                                                echo $_SESSION['email'];
+                                                                                                            } ?>" required></p>
             <p>Informe sua senha (obrigatório) <input type="text" name="senha" class="form-control" required></p>
             <?php if (count($erro) > 0)
                 foreach ($erro as $msg) {
@@ -71,7 +74,7 @@ if (sizeof($_POST) > 0) {
                 }
             ?>
             <p>
-                <button type="submit" class="btn btn-primary">Logar</button>
+                <button type="submit" class="btn btn-warning">Logar</button>
 
             </p>
             <p>
