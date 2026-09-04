@@ -1,58 +1,39 @@
 <html>
 
 <head>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css" integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.min.js" integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <style>
-
-        body {
-
-            background-color: white;
-            margin: 0;
-            color: black;
-        }
-
-        .menu {
-
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex: 1;
-        }
-
-        .menu a {
-
-            color: black;
-            text-decoration: none;
-            font-size: 12px;
-        }
-
-        .menu a:hover {
-
-            text-decoration: underline;
-        }
-
-        img {
-
-            max-width: 50%;
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 
-    <div class="row bg-warning border border-2 border-dark text-dark p-3">
+ <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container-fluid">
 
-        <div class="col text-center fw-bold">
-            Webt Finance
+            <a class="navbar-brand" href="inicialUsuario.php"> Webt Finance</a>
+
+            <div class="d-flex order-lg-last">
+
+            
+
+            <a href="cadastro.php" class="bg-warning border border-2 border-dark text-dark text-decoration-none p-3 cadastro" >
+                Ir para o cadastro
+            </a>
+
+            <a href="login.php" class="bg-warning border border-2 border-dark text-dark text-decoration-none p-3 cadastro">
+                Ir para o login
+            </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+            
         </div>
-
-    </div>
+    </nav>
 
 
     <div class="row text-center mb-5 mt-4">
@@ -191,50 +172,18 @@
 
         </div>
 
-        Nós somos estudantes do ifmg campus Ribeirão das Neves da mesma turma, começamos a elaboração desse site a partir da análise de ferramentas de organização financeira, como o porquim IA.
+        <div class="row p-5">
+
+        <div class="col p-4">
+
+            <p class="lh-lg">
+                o projeto busca criar um sistema de organização financeira dos usuários, com foco em analisar os registros financeiros para gerar relatórios que permitam ao usuário visualizar, de forma clara e objetiva, o destino do seu próprio dinheiro, tornando possível identificar se a gestão financeira está sendo realizada de forma consciente ou descontrolada, possibilitando a adoção de medidas corretivas com base nas informações apresentadas nos relatórios.
+            </p>
+
 
     </div>
 
 </div>
-
-
-    <div class="row p-5">
-
-        <div class="col p-4">
-
-            <h1 class="mb-4">
-                Teste já!
-            </h1>
-
-            <p class="lh-lg">
-                basta apenas colocar o seu email e criar uma senha para que você possa acessar nossas funcionalidades
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="row text-center mt-4 mb-5">
-
-        <div class="col">
-
-            <a href="cadastro.php" class="bg-warning border border-2 border-dark text-dark text-decoration-none p-3">
-                Ir para o cadastro
-            </a>
-
-        </div>
-
-        <div class="col">
-
-            <a href="login.php" class="bg-warning border border-2 border-dark text-dark text-decoration-none p-3">
-                Ir para o login
-            </a>
-
-        </div>
-
-    </div>
-
 </body>
 
 </html>
