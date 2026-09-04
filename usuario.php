@@ -53,7 +53,7 @@ $ln = $rs->fetch_assoc();
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ver Fixos</a>
+                        <a class="nav-link" href="gastosFixos.php">Ver Fixos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Opção 2</a>

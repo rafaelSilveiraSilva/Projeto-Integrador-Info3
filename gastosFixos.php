@@ -1,14 +1,11 @@
 <?php
-session_start();
 $mysql = new mysqli(
-    "localhost", // Servidor
-    "root", // Adiministrador da máquina (usuário)
-    "", // Senha (opcional)
-    "pi_iii", // Nome do banco de dados
-    3306 // Porta utilizada
+    "localhost",
+    "root",
+    "", 
+    "pi_iii", 
+    3306
 );
-$rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
-$ln = $rs->fetch_assoc();
 ?>
 
 <html>
@@ -30,7 +27,7 @@ $ln = $rs->fetch_assoc();
             <div class="d-flex order-lg-last">
 
 
-                <a href="#" class="btn d-flex align-items-center">
+                <a href="usuario.php" class="btn d-flex align-items-center">
 
 
 
@@ -69,7 +66,6 @@ $ln = $rs->fetch_assoc();
 
         </div>
     </nav>
-
     <div class="container-fluid p-4">
 
         <div class="row ">
@@ -77,57 +73,5 @@ $ln = $rs->fetch_assoc();
                 <a href="inicialUsuario.php" class="btn btn-danger mb-4">Voltar</a>
             </div>
         </div>
-
-        <div class="row  align-items-end text-center">
-            <div class="col-6  ">
-                <h4><b>Histórico completo</b></h4>
-            </div>
-            <div class="col-4  text-end">
-                <h4><b>Saldo Atual</b></h4>
-
-            </div>
-            <div class="col-2 "></div>
-        </div>
-
-        <div class="row ">
-            <div class="col-6 ">
-                <table class="table table-striped table-bordered text-center">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Valor</th>
-                    </tr>
-
-                    <?php
-                    $rs = $mysql->query("SELECT te.nome, te.valor
-                                         FROM transacaoEsporadica as te
-                                        WHERE te.usuario_id = $_SESSION[usuario]
-                                        
-                                        ");
-
-                    foreach ($rs as $line): ?>
-
-                        <tr>
-                            <td><?= $line["nome"] ?></td>
-                            <td><?= $line["valor"] ?> R$</td>
-                        </tr>
-
-                    <?php endforeach ?>
-
-                </table>
-            </div>
-            <div class="col-4  text-end">
-
-                <h4><?= $ln["saldo"] ?> R$</h4>
-            </div>
-            <div class="col-2 "></div>
-        </div>
-
-
-
-    </div>
-
-
-
+</div>
 </body>
-
-</html>
