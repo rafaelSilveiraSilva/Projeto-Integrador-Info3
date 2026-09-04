@@ -9,6 +9,7 @@ $mysql = new mysqli(
 );
 $rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
 $ln = $rs->fetch_assoc();
+
 ?>
 
 <html>
@@ -53,7 +54,7 @@ $ln = $rs->fetch_assoc();
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="gastosFixos.php">Ver Fixos</a>
+                        <a class="nav-link" href="#">Ver Fixos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Opção 2</a>
@@ -72,27 +73,24 @@ $ln = $rs->fetch_assoc();
 
     <div class="container-fluid p-4">
         <div class="row ">
+            <div class="col  text-center">
+                <img
+                    class="img-fluid"
+                    width="200"
+                    src="https://img.magnific.com/vetores-premium/ilustracao-plana-vetorial-em-escala-de-cinza-avatar-perfil-de-usuario-icone-de-pessoa-imagem-de-perfil-de-silhueta-neutra-de-genero-adequado-para-perfis-de-midia-social-icones-protetores-de-tela-e-como-um-modelo-x9xa_719432-2191.jpg?semt=ais_hybrid&w=740&q=80">
+            </div>
 
-
-            <div class="col-10  ">
+            <div class="col  ">
                 <h1><b>Nome: </b><?= $ln['nome'] ?></h1>
                 <h2><b>Email: </b><?= $ln['email'] ?></h2>
                 <h2><b>Gênero: </b><?= $ln['sexo'] ?></h2>
             </div>
 
-            <div class="col-2 text-end">
+            <div class="col  d-flex justify-content-center align-items-center">
                 <a
-                    class="btn btn-warning mt-3"
+                    class="btn btn-warning"
                     href="atualizaDadosUsuario.php">
-                    <b>Mudar nome</b>
-                </a>
-
-                <a
-                    href="index.php"
-                    class="btn btn-danger mt-3"
-                    onclick="<?php unset($_SESSION); ?>">
-
-                    <b>Logout</b>
+                    <b>Editar dados</b>
                 </a>
             </div>
         </div>
@@ -105,47 +103,33 @@ $ln = $rs->fetch_assoc();
 
         <div class="row  mt-3">
             <div class="col  text-center">
-                <img src="https://s4.static.brasilescola.uol.com.br/be/2020/03/shutterstock-396863464.jpg"
+                <img src="graficoGastosEsporadicosCategoria.php"
                     class="img-fluid"
                     width="350">
             </div>
             <div class="col  text-center">
-                <img src="https://s4.static.brasilescola.uol.com.br/be/2020/03/shutterstock-396863464.jpg"
-                    class="img-fluid"
-                    width="350">
-            </div>
-        </div>
-
-        <div class="row ">
-            <div class="col  text-center">
-                <p>Gráfico do percentual de gastos esporádicos por categorias</p>
-            </div>
-            <div class="col  text-center">
-                <p>Gráfico do percentual de ganhos esporádicos por categorias</p>
-            </div>
-        </div>
-
-        <div class="row ">
-            <div class="col  text-center">
-                <img src="https://s4.static.brasilescola.uol.com.br/be/2020/03/shutterstock-396863464.jpg"
-                    class="img-fluid"
-                    width="350">
-            </div>
-            <div class="col  text-center">
-                <img src="https://s4.static.brasilescola.uol.com.br/be/2020/03/shutterstock-396863464.jpg"
+                <img src="graficoGanhosEsporadicosCategoria.php"
                     class="img-fluid"
                     width="350">
             </div>
         </div>
 
+       
+
         <div class="row ">
             <div class="col  text-center">
-                <p>Gráfico do percentual de gastos recorrentes por categorias</p>
+                <img src="graficoGastosRecorrentesCategoria.php"
+                    class="img-fluid"
+                    width="350">
             </div>
             <div class="col  text-center">
-                <p>Gráfico do percentual de ganhos recorrentes por categorias</p>
+                <img src="graficoGanhosRecorrentesCategoria.php"
+                    class="img-fluid"
+                    width="350">
             </div>
         </div>
+
+        
     </div>
 
 
