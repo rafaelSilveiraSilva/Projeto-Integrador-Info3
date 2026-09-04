@@ -224,30 +224,76 @@ INSERT INTO Categoria (nome, ativo) VALUES
 ('Investimentos', 1),
 ('Emergência', 1);
 
-/* ----------------  T R A N S A C A O   E S P O R A D I C A  -------------------- */
-INSERT INTO TransacaoEsporadica
-(nome, descricao, dataDaTransacao, ativo, valor, tipo, categoria_id, usuario_id) VALUES
-('Venda de livro', 'Venda de um livro usado para um colega.', '2026-07-01', 1, 45.00, 'Ganho', 8, 1),
-('Compra de lanche', 'Lanche da tarde na cantina.', '2026-07-02', 1, 18.50, 'Gasto', 1, 2),
-('Freela de edição', 'Edição de vídeo para um projeto curto.', '2026-07-03', 1, 180.00, 'Ganho', 8, 3),
-('Consulta médica', 'Consulta particular com clínico geral.', '2026-07-04', 1, 120.00, 'Gasto', 4, 4),
-('Presente recebido', 'Dinheiro recebido em presente de aniversário.', '2026-07-05', 1, 200.00, 'Ganho', 10, 5),
-('Material escolar', 'Compra de caderno e canetas.', '2026-07-06', 1, 67.90, 'Gasto', 5, 6),
-('Ingresso cinema', 'Saída com amigos no cinema.', '2026-07-07', 1, 32.00, 'Gasto', 6, 7),
-('Bico de evento', 'Trabalho rápido em evento escolar.', '2026-07-08', 1, 150.00, 'Ganho', 8, 8),
-('Reembolso', 'Reembolso de compra cancelada.', '2026-07-09', 1, 89.99, 'Ganho', 10, 9),
-('Conserto do fone', 'Troca de cabo e ajuste do fone.', '2026-07-10', 1, 55.00, 'Gasto', 4, 10);
+USE PI_III;
 
-/* ----------------  T R A N S A C A O   R E C O R R E N T E  -------------------- */
+/* ---------------- T R A N S A C A O   E S P O R A D I C A -------------------- */
+INSERT INTO TransacaoEsporadica 
+(nome, descricao, dataDaTransacao, ativo, valor, tipo, categoria_id, usuario_id) VALUES
+
+-- Usuário 1 (Ana Clara) | Ganhos: 450.00 | Gastos: 82.40
+('Venda de apostilas', 'Venda de material didático antigo.', '2026-09-02', 1, 150.00, 'Ganho', 8, 1),
+('Serviço de digitação', 'Trabalho de digitação de documentos.', '2026-09-12', 1, 300.00, 'Ganho', 8, 1),
+('Lanche no shopping', 'Saída no fim de semana com amigas.', '2026-09-05', 1, 42.50, 'Gasto', 1, 1),
+('Uber para o curso', 'Corrida em dia de chuva.', '2026-09-18', 1, 39.90, 'Gasto', 3, 1),
+
+-- Usuário 2 (Bruno Henrique) | Ganhos: 500.00 | Gastos: 165.30
+('Venda de jogo de videogame', 'Venda de jogo seminovo.', '2026-09-03', 1, 200.00, 'Ganho', 8, 2),
+('Serviço de TI', 'Suporte técnico em computador de cliente.', '2026-09-15', 1, 300.00, 'Ganho', 8, 2),
+('Supermercado', 'Compras de itens para a semana.', '2026-09-08', 1, 135.30, 'Gasto', 1, 2),
+('Recarga de celular', 'Recarga de créditos pré-pago.', '2026-09-20', 1, 30.00, 'Gasto', 7, 2),
+
+-- Usuário 3 (Camila Rocha) | Ganhos: 850.00 | Gastos: 278.00
+('Projeto Freelancer UI', 'Desenvolvimento de telas para app.', '2026-09-04', 1, 850.00, 'Ganho', 8, 3),
+('Cinema e pipoca', 'Ingresso e combo no cinema.', '2026-09-10', 1, 58.00, 'Gasto', 6, 3),
+('Curso online', 'Compra de workshop de curta duração.', '2026-09-14', 1, 120.00, 'Gasto', 5, 3),
+('Roupas', 'Compra de peças básicas.', '2026-09-21', 1, 100.00, 'Gasto', 6, 3),
+
+-- Usuário 4 (Diego Santos) | Ganhos: 400.00 | Gastos: 139.80
+('Venda de bicicleta', 'Venda de bicicleta usada.', '2026-09-01', 1, 400.00, 'Ganho', 10, 4),
+('Farmácia', 'Remédios para gripe e vitaminas.', '2026-09-06', 1, 74.80, 'Gasto', 4, 4),
+('Almoço de domingo', 'Restaurante em família.', '2026-09-13', 1, 65.00, 'Gasto', 1, 4),
+
+-- Usuário 5 (Eduarda Martins) | Ganhos: 600.00 | Gastos: 295.00
+('Aulas particulares', 'Reforço de matemática para alunos.', '2026-09-07', 1, 350.00, 'Ganho', 8, 5),
+('Prêmio de sorteio', 'Sorteio em loja parceira.', '2026-09-19', 1, 250.00, 'Ganho', 10, 5),
+('Feira do livro', 'Livros infantis e de literatura.', '2026-09-11', 1, 95.00, 'Gasto', 5, 5),
+('Aporte em Investimento', 'Aplicação no Tesouro Direto.', '2026-09-22', 1, 200.00, 'Gasto', 9, 5),
+
+-- Usuário 6 (Felipe Nogueira) | Ganhos: 550.00 | Gastos: 225.00
+('Monitoria acadêmica', 'Pagamento por auxílio em aulas.', '2026-09-05', 1, 350.00, 'Ganho', 8, 6),
+('Venda de instrumento', 'Venda de pedal de guitarra.', '2026-09-16', 1, 200.00, 'Ganho', 8, 6),
+('Ingresso para show', 'Festival de música local.', '2026-09-09', 1, 140.00, 'Gasto', 6, 6),
+('Conserto da bicicleta', 'Troca de pneu e lubrificação.', '2026-09-23', 1, 85.00, 'Gasto', 3, 6),
+
+-- Usuário 7 (Gabriela Ferreira) | Ganhos: 350.00 | Gastos: 100.40
+('Bico de fotografia', 'Ensaio fotográfico de aniversário.', '2026-09-08', 1, 350.00, 'Ganho', 8, 7),
+('Lanche na escola', 'Salgado e suco na cantina.', '2026-09-02', 1, 12.50, 'Gasto', 1, 7),
+('Presente de aniversário', 'Comprado para amiga.', '2026-09-17', 1, 60.00, 'Gasto', 6, 7),
+('Material de artes', 'Tintas e pincéis.', '2026-09-24', 1, 27.90, 'Gasto', 6, 7),
+
+-- Usuário 8 (Henrique Cardoso) | Ganhos: 900.00 | Gastos: 329.90
+('Consultoria simples', 'Análise de redes sociais para loja.', '2026-09-10', 1, 900.00, 'Ganho', 8, 8),
+('Manutenção do carro', 'Troca de óleo e filtro.', '2026-09-18', 1, 280.00, 'Gasto', 3, 8),
+('Assinatura de música', 'Serviço de streaming de áudio.', '2026-09-25', 1, 49.90, 'Gasto', 7, 8),
+
+-- Usuário 9 (Isabela Oliveira) | Ganhos: 750.00 | Gastos: 299.90
+('Venda de roupas seminovas', 'Desapego de itens em brechó.', '2026-09-04', 1, 350.00, 'Ganho', 10, 9),
+('Serviço de tradução', 'Tradução de artigo acadêmico.', '2026-09-14', 1, 400.00, 'Ganho', 8, 9),
+('Roupas e acessórios', 'Roupas básicas na promoção.', '2026-09-09', 1, 149.90, 'Gasto', 6, 9),
+('Consulta dentista', 'Limpeza de rotina.', '2026-09-21', 1, 150.00, 'Gasto', 4, 9),
+
+-- Usuário 10 (João Victor) | Ganhos: 500.00 | Gastos: 161.90
+('Formatação de computador', 'Manutenção preventiva de PCs.', '2026-09-06', 1, 500.00, 'Ganho', 8, 10),
+('Jogos digitais', 'Compra na loja virtual de games.', '2026-09-03', 1, 89.90, 'Gasto', 6, 10),
+('Serviço de entrega', 'Taxa de envio de documentos.', '2026-09-16', 1, 22.00, 'Gasto', 3, 10),
+('Hamburgueria', 'Jantar de fim de semana.', '2026-09-26', 1, 50.00, 'Gasto', 1, 10);
+
+
+/* ---------------- T R A N S A C A O   R E C O R R E N T E -------------------- */
 INSERT INTO TransacaoRecorrente
 (nome, descricao, diaVencimento, ativo, valor, tipo, categoria_id, usuario_id) VALUES
-('Mensalidade escolar', 'Pagamento fixo da mensalidade.', 5, 1, 450.00, 'Gasto', 5, 1),
-('Internet', 'Plano de internet residencial.', 10, 1, 99.90, 'Gasto', 7, 2),
-('Bolsa estágio', 'Valor mensal recebido pelo estágio.', 15, 1, 800.00, 'Ganho', 8, 3),
-('Academia', 'Plano mensal da academia.', 12, 1, 79.90, 'Gasto', 4, 4),
-('Aluguel', 'Pagamento do aluguel da casa.', 8, 1, 1200.00, 'Gasto', 2, 5),
-('Mesada', 'Valor fixo recebido da família.', 20, 1, 300.00, 'Ganho', 10, 6),
-('Streaming', 'Assinatura de serviço de streaming.', 18, 1, 27.90, 'Gasto', 7, 7),
-('Transporte fixo', 'Gasto mensal com deslocamento.', 25, 1, 150.00, 'Gasto', 3, 8),
-('Renda fixa', 'Valor mensal de renda por serviço.', 30, 1, 950.00, 'Ganho', 8, 9),
-('Plano de saúde', 'Mensalidade do plano de saúde.', 3, 1, 210.00, 'Gasto', 4, 10);
+('Bolsa de Estudos/Estágio', 'Auxílio mensal de estudos.', 5, 1, 600.00, 'Ganho', 8, 1),
+('Auxílio Transporte', 'Valor mensal para deslocamento.', 10, 1, 250.00, 'Ganho', 3, 2),
+('Comissão Mensal', 'Comissão fixa por vendas online.', 15, 1, 400.00, 'Ganho', 8, 4),
+('Mesada Familiar', 'Recebimento mensal fixo.', 1, 1, 350.00, 'Ganho', 10, 7),
+('Dividendos', 'Rendimento mensal de investimentos.', 28, 1, 180.00, 'Ganho', 9, 10);
