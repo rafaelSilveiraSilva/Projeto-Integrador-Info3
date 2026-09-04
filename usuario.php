@@ -72,7 +72,7 @@ $ln = $rs->fetch_assoc();
 
     <div class="container-fluid p-4">
         <div class="row ">
-            
+
 
             <div class="col-10  ">
                 <h1><b>Nome: </b><?= $ln['nome'] ?></h1>
@@ -85,6 +85,14 @@ $ln = $rs->fetch_assoc();
                     class="btn btn-warning mt-3"
                     href="atualizaDadosUsuario.php">
                     <b>Mudar nome</b>
+                </a>
+
+                <a
+                    href="index.php"
+                    class="btn btn-danger mt-3"
+                    onclick="<?php unset($_SESSION); ?>">
+
+                    <b>Logout</b>
                 </a>
             </div>
         </div>
