@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mysql = new mysqli(
     "localhost",
     "root",
@@ -6,6 +7,8 @@ $mysql = new mysqli(
     "pi_iii", 
     3306
 );
+$rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
+$ln = $rs->fetch_assoc();
 ?>
 
 <html>
@@ -15,6 +18,25 @@ $mysql = new mysqli(
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.min.js" integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <link rel="stylesheet" href="https://jsdelivr.net"> -->
 
+
+    <style>
+    .progress-container {
+        width: 100%;
+        background-color: #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        height: 30px;
+    }
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: #4CAF50;
+        text-align: center;
+        color: white;
+        line-height: 30px;
+        transition: width 0.3s ease;
+    }
+    </style>
 </head>
 
 <body>
@@ -66,12 +88,38 @@ $mysql = new mysqli(
 
         </div>
     </nav>
+
     <div class="container-fluid p-4">
 
-        <div class="row ">
+        <div class="row">
             <div class="col ">
                 <a href="inicialUsuario.php" class="btn btn-danger mb-4">Voltar</a>
             </div>
         </div>
-</div>
+
+        <div class="row  align-items-end text-center">
+            <div class="col-6  ">
+                <h4><b>Orçamentos</b></h4>
+            </div>
+            <div class="col-4  text-end">
+                <h4><b>Saldo Atual</b></h4>
+            </div>
+            <div class="col-2 "></div>
+        </div>
+         <div class="row ">
+            <div class="col-6 ">
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
+
+                <br>
+                <button onclick="startProcess()">Iniciar Processo</button>
+            </div>
+            <div class="col-4  text-end">
+
+                <h4><?= $ln["saldo"] ?> R$</h4>
+            </div>
+            <div class="col-2 "></div>
+        </div>
+    </div>
 </body>
