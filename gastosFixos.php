@@ -99,7 +99,7 @@ $ln = $rs->fetch_assoc();
 
         <div class="row  align-items-end text-center">
             <div class="col-6  ">
-                <h4><b>Orçamentos</b></h4>
+                <h3><b>Orçamentos</b></h3>
             </div>
             <div class="col-4  text-end">
                 <h4><b>Saldo Atual</b></h4>
@@ -108,17 +108,57 @@ $ln = $rs->fetch_assoc();
         </div>
          <div class="row ">
             <div class="col-6 ">
-                <div class="progress-container">
-                    <div class="progress-bar" id="progressBar">0%</div>
+
+                <div class = "mt-2">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">90%</div>
+                    </div>
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
                 </div>
 
-                <br>
-                <button onclick="startProcess()">Iniciar Processo</button>
+                <div class = "mt-5">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div> 
+                    </div> 
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
+
+                <div class = "mt-5">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%</div>
+                    </div>
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
+
+                <div class = "mt-5">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%">49%</div>
+                    </div>
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
+
             </div>
             <div class="col-4  text-end">
-
                 <h4><?= $ln["saldo"] ?> R$</h4>
+            
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
             </div>
+            
             <div class="col-2 "></div>
         </div>
     </div>
