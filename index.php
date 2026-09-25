@@ -11,13 +11,14 @@
  <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="inicialUsuario.php"> Webt Finance</a>
+            <b class="navbar-brand" href="inicialUsuario.php"> <img src="https://i.ibb.co/Q14xFgt/Logo-PI-1.png"  width="95" > Webt Finance </b>
+            
 
             <div class="d-flex order-lg-last">
 
             
 
-            <a href="cadastro.php" class="bg-warning border border-2 border-dark text-dark text-decoration-none p-3 cadastro">
+            <a href="cadastro.php" class="bg-warning border border-2 border-dark text-dark text-decoration-none p-3 cadastro" >
                 Ir para o cadastro
             </a>
 
@@ -47,7 +48,7 @@
 
         <div class="col text-center mb-5">
 
-            <img src="https://i.ibb.co/84csr0tb/Webt-Finance-2.png" class="img-fluid" width="400">
+            
 
         </div>
 
@@ -96,7 +97,7 @@
             <div class="col-12 col-sm-6 col-md-3 text-center">
 
                 <div>
-                    <img src="https://i.ibb.co/vCQJPgS0/d0846ee3-5f7c-4225-bfa4-a03da770043c.jpg" width="185" class="img-fluid">
+                    <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
                 </div>
 
                 <div>
