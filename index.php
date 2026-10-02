@@ -97,7 +97,7 @@
             <div class="col-12 col-sm-6 col-md-3 text-center">
 
                 <div>
-                    <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
+                    <img src="https://i.ibb.co/dsC5Ldsp/bernardo.png" width="240" class="img-fluid">
                 </div>
 
                 <div>
@@ -110,7 +110,7 @@
             <div class="col-12 col-sm-6 col-md-3 text-center">
 
                 <div class="foto-equipe">
-                    <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
+                    <img src="https://i.ibb.co/YrKyLL2/eliasbonito-1.png" width="240" class="img-fluid"> 
                 </div>
 
                 <div>
