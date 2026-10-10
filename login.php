@@ -25,7 +25,7 @@ if (sizeof($_POST) > 0) {
         $contador = $rs->num_rows;
 
         if ($contador == 0) {
-            $erro[] = "Este email não pertence à nenhum usuário cadastrado!";
+            $erro[] = "Erro ao realizar o login!";
         } else {
 
             if ($ln['senha'] == $_POST['senha']) {
@@ -56,7 +56,7 @@ if (sizeof($_POST) > 0) {
 </head>
 
 <body>
-
+    
     <div class="container-fluid p-4">
 
 

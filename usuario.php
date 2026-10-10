@@ -22,65 +22,20 @@ $ln = $rs->fetch_assoc();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-warning">
-        <div class="container-fluid">
-
-            <!-- logo -->
-            <a class="navbar-brand" href="inicialUsuario.php"> Webt Finance</a>
-
-            <div class="d-flex order-lg-last">
-
-
-                <a href="#" class="btn d-flex align-items-center">
-
-
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                    </svg>
-                </a>
-
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-            </div>
-
-
-
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ver Fixos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Opção 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Opção 3</a>
-                    </li>
-
-                </ul>
-            </div>
-
-
-
-        </div>
-    </nav>
+    <?php include 'navbar.php' ?>
+    <!-- esse <div class="row mb-5 mt-5"></div> é pra dar um espaçamento pra navbar não tampar o conteúdo da página. -->
+    <div class="row mb-5 mt-5"></div>
 
     <div class="container-fluid p-4">
         <div class="row ">
-            <div class="col-3  text-center">
+            <!-- <div class="col-3  text-center">
                 <img
                     class="img-fluid"
                     width="200"
                     src="https://img.magnific.com/vetores-premium/ilustracao-plana-vetorial-em-escala-de-cinza-avatar-perfil-de-usuario-icone-de-pessoa-imagem-de-perfil-de-silhueta-neutra-de-genero-adequado-para-perfis-de-midia-social-icones-protetores-de-tela-e-como-um-modelo-x9xa_719432-2191.jpg?semt=ais_hybrid&w=740&q=80">
-            </div>
+            </div> -->
 
-            <div class="col-7  ">
+            <div class="col-10  ">
                 <h1><b>Nome: </b><?= $ln['nome'] ?></h1>
                 <h2><b>Email: </b><?= $ln['email'] ?></h2>
                 <h2><b>Gênero: </b><?= $ln['sexo'] ?></h2>
@@ -95,11 +50,21 @@ $ln = $rs->fetch_assoc();
 
                 <a
                     href="index.php"
-                    class="btn btn-danger mt-3"
+                    class="btn btn-secondary mt-3"
                     onclick="<?php unset($_SESSION); ?>">
 
                     <b>Logout</b>
                 </a>
+
+                <a class="btn btn-danger mt-3"
+                    href="deletarConta.php?>"
+                    onclick="return confirm('ATENÇÃO: Tem certeza que deseja DELETAR sua conta? Esta ação não pode ser desfeita!');">
+                    <b>Deletar conta</b>
+                </a>
+
+
+
+
             </div>
         </div>
         <hr class="mt-5 mb-5">
