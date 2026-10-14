@@ -26,12 +26,12 @@ $ln = $rs->fetch_assoc();
 
     <div class="container-fluid p-4">
         <div class="row mb-5 mt-5"></div>
-        
+
         <div class="row">
 
             <div class="col-6">
                 <h4><b>Saldo Atual</b></h4>
-                <h4><?= $ln["saldo"] ?> R$</h4>
+                <h4>R$ <?= $ln["saldo"] ?></h4>
             </div>
 
             <div class="col-6 text-center">
@@ -80,7 +80,7 @@ $ln = $rs->fetch_assoc();
                     </tr>
 
                     <?php
-                    $rs = $mysql->query("SELECT te.nome, te.valor
+                    $rs = $mysql->query("SELECT te.nome, te.valor, te.tipo
                                          FROM transacaoEsporadica as te
                                         WHERE te.usuario_id = $_SESSION[usuario]
                                         LIMIT 10
@@ -88,7 +88,14 @@ $ln = $rs->fetch_assoc();
 
                     foreach ($rs as $ln): ?>
 
-                        <tr>
+                        <tr
+                            <?php
+                            if ($ln["tipo"] == "Ganho") {
+                                echo "class='table-success'";
+                            } else {
+                                echo "class='table-danger'";
+                            }
+                            ?>>
                             <td><?= $ln["nome"] ?></td>
                             <td><?= $ln["valor"] ?> R$</td>
                         </tr>

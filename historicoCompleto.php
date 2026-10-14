@@ -9,6 +9,33 @@ $mysql = new mysqli(
 );
 $rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
 $ln = $rs->fetch_assoc();
+$diff = 0;
+
+// =-=
+
+$rs2 = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo
+                                         FROM transacaoEsporadica as te
+                                        WHERE te.usuario_id = $_SESSION[usuario]
+                                        
+                                        ");
+
+foreach ($rs2 as $line2) {
+
+
+    if ($line2["tipo"] == "Ganho") {
+        
+        $diff += $line2["valor"];
+    } else {
+       
+        $diff -= $line2["valor"];
+    }
+}
+
+
+?>
+
+
+
 ?>
 
 <html>
@@ -33,27 +60,43 @@ $ln = $rs->fetch_assoc();
             </div>
         </div>
 
-        <div class="row  align-items-end text-center">
-            <div class="col-6  ">
+        <div class="row text-center">
+            <div class="col-12 mb-3  ">
                 <h4><b>Histórico completo</b></h4>
             </div>
-            <div class="col-4  text-end">
+            <!-- <div class="col-4  text-end">
                 <h4><b>Saldo Atual</b></h4>
 
+            </div> -->
+
+        </div>
+
+        <div class="row text-center mb-3">
+            <div class="col">
+                <?php
+                if ($diff > 0) {
+                    echo "<p>Mais ganhos do que Despesas! Parabéns!</p>";
+                } elseif ($diff < 0) {
+                    echo "<p>Mais gastos do que ganhos. Com ajustes, você consegue mudar isso!</p>";
+                } else {
+                    echo "<p>Gastos e ganhos iguais! Continue caminhando para uma economia ideal!</p>";
+                }
+                ?>
             </div>
-            <div class="col-2 "></div>
         </div>
 
         <div class="row ">
-            <div class="col-6 ">
+            <div class="col-12 ">
                 <table class="table table-striped table-bordered text-center">
                     <tr>
                         <th>Nome</th>
+                        <th>Descrição</th>
                         <th>Valor</th>
+
                     </tr>
 
                     <?php
-                    $rs = $mysql->query("SELECT te.nome, te.valor
+                    $rs = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo
                                          FROM transacaoEsporadica as te
                                         WHERE te.usuario_id = $_SESSION[usuario]
                                         
@@ -61,20 +104,30 @@ $ln = $rs->fetch_assoc();
 
                     foreach ($rs as $line): ?>
 
-                        <tr>
+                        <tr <?php
+                            if ($line["tipo"] == "Ganho") {
+                                echo "class='table-success'";
+                                $diff += $line["valor"];
+                            } else {
+                                echo "class='table-danger'";
+                                $diff -= $line["valor"];
+                            }
+                            ?>>
                             <td><?= $line["nome"] ?></td>
-                            <td><?= $line["valor"] ?> R$</td>
+                            <td><?= $line["descricao"] ?></td>
+                            <td>R$ <?= $line["valor"] ?></td>
+
                         </tr>
 
                     <?php endforeach ?>
 
                 </table>
             </div>
-            <div class="col-4  text-end">
+            <!-- <div class="col-4  text-end">
 
                 <h4><?= $ln["saldo"] ?> R$</h4>
-            </div>
-            <div class="col-2 "></div>
+            </div> -->
+
         </div>
 
 

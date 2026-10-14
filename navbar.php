@@ -5,8 +5,8 @@
         <a class="navbar-brand" href="inicialUsuario.php"> <img class="img-fluid" width="200" src="https://i.ibb.co/4njDQBPv/C-pia-de-Logo-PI-2400-x-800-px-1.png" alt="Cópia de Logo PI (2400 x 800 px)(1)" border="0">
         </a>
         <div class="d-flex order-lg-last">
-
-
+            <!-- É normal ter um erro na linha de baixo (caso tenha) -->
+            <p class="d-flex align-items-center mb-0">R$ <?= $ln["saldo"] ?></p>
             <a href="usuario.php" class="btn d-flex align-items-center">
 
 
@@ -33,11 +33,11 @@
                     <a class="nav-link" href="gastosFixos.php">Ver Fixos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Opção 2</a>
+                    <a class="nav-link" href="historicoCompleto.php">Histórico</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Opção 3</a>
-                </li>
+                </li> -->
 
             </ul>
         </div>
