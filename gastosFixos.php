@@ -40,9 +40,54 @@ $ln = $rs->fetch_assoc();
 </head>
 
 <body>
-    <?php include 'navbar.php' ?>
-    <!-- esse <div class="row mb-5 mt-5"></div> é pra dar um espaçamento pra navbar não tampar o conteúdo da página. -->
-    <div class="row mb-5 mt-5"></div>
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container-fluid">
+
+            <!-- logo -->
+            <a class="navbar-brand" href="inicialUsuario.php"> Webt Finance</a>
+
+            <div class="d-flex order-lg-last">
+
+
+                <a href="usuario.php" class="btn d-flex align-items-center">
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                    </svg>
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+
+
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="gastosFixos.php">Ver Fixos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Opção 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Opção 3</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+
+        </div>
+    </nav>
 
     <div class="container-fluid p-4">
 
@@ -54,7 +99,7 @@ $ln = $rs->fetch_assoc();
 
         <div class="row  align-items-end text-center">
             <div class="col-6  ">
-                <h3><b>Formulario de Gastos</b></h3>
+                <h3><b>Orçamentos</b></h3>
             </div>
             <div class="col-4  text-end">
                 <h4><b>Saldo Atual</b></h4>
@@ -64,23 +109,56 @@ $ln = $rs->fetch_assoc();
          <div class="row ">
             <div class="col-6 ">
 
-               
+                <div class = "mt-2">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">90%</div>
+                    </div>
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
+
+                <div class = "mt-5">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div> 
+                    </div> 
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
+
+                <div class = "mt-5">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%</div>
+                    </div>
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
+
+                <div class = "mt-5">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%">49%</div>
+                    </div>
+                </div>
+                <div class = "mt-2 text-center">
+                    <a class="btn btn-warning" href="#" role="button">Excluir</a>
+                </div>
 
             </div>
-            <div class="col-4  text-end">
-                <h4><?= $ln["saldo"] ?> R$</h4>
             
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+            
+            <div class="col-4 text-end">
+                <h4><?= $ln["saldo"] ?> R$</h4>
+                <div class="card text-center p-1 mt-4 mb-5" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Adicionar Gasto, Orçamento e/ou Investimento Fixo</h5>
+                        <a href="#" class="btn btn-warning">Adicionar</a>
                     </div>
                 </div>
             </div>
+
             
-            <div class="col-2 "></div>
         </div>
     </div>
 </body>
