@@ -1,27 +1,24 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
 
-// Conexão com o banco de dados utilizando os seus parâmetros
 $mysql = new mysqli(
-    "localhost", // Servidor
-    "root",      // Administrador da máquina (usuário)
-    "",          // Senha (opcional)
-    "pi_iii",    // Nome do banco de dados
-    3306         // Porta utilizada
+    "localhost", 
+    "root",      
+    "",          
+    "pi_iii",    
+    3306         
 );
 
-// Verifica erro de conexão
 if ($mysql->connect_error) {
     die("Falha na conexão: " . $mysql->connect_error);
 }
 
-// Processa o cadastro de nova categoria personalizada
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['acao']) && $_POST['acao'] == 'cadastrar') {
     $nome = $mysql->real_escape_string(trim($_POST['nome']));
     $tipo = $mysql->real_escape_string(trim($_POST['tipo']));
@@ -34,20 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['acao']) && $_POST['aca
     }
 }
 
-// Processa a exclusão de categoria personalizada do usuário
+
 if (isset($_GET['deletar'])) {
     $id_cat = intval($_GET['deletar']);
     $usuario_id = $_SESSION['usuario'];
-    // Garante que o usuário só deleta a categoria que pertence a ele
+
     $mysql->query("DELETE FROM categorias WHERE id = $id_cat AND usuario_id = '$usuario_id'");
     header("Location: categorias.php");
     exit();
 }
 
-// Busca as categorias pré-existentes do sistema (onde usuario_id é NULL ou 0)
+
 $res_sistema = $mysql->query("SELECT * FROM categorias WHERE usuario_id IS NULL OR usuario_id = 0");
 
-// Busca as categorias personalizadas do usuário logado
+
 $res_usuario = $mysql->query("SELECT * FROM categorias WHERE usuario_id = '$_SESSION[usuario]'");
 ?>
 
@@ -65,7 +62,7 @@ $res_usuario = $mysql->query("SELECT * FROM categorias WHERE usuario_id = '$_SES
 <body>
     <?php include 'navbar.php' ?>
 
-    <!-- Espaçamento para a navbar fixa -->
+    
     <div class="row mb-5 mt-5"></div>
 
     <div class="container-fluid p-4">
@@ -85,7 +82,7 @@ $res_usuario = $mysql->query("SELECT * FROM categorias WHERE usuario_id = '$_SES
 
         <div class="row justify-content-center">
             
-            <!-- Formulário para adicionar categoria -->
+            
             <div class="col-12 col-md-4 mb-4">
                 <div class="card border-0 shadow-sm p-4 h-100">
                     <h3 class="h5 fw-bold mb-3">➕ Nova Categoria</h3>
@@ -112,12 +109,12 @@ $res_usuario = $mysql->query("SELECT * FROM categorias WHERE usuario_id = '$_SES
                 </div>
             </div>
 
-            <!-- Listagem de Categorias (Sistema + Usuário) -->
+            
             <div class="col-12 col-md-7">
                 <div class="card border-0 shadow-sm p-4 h-100">
                     <h3 class="h5 fw-bold mb-3">📋 Categorias Disponíveis</h3>
 
-                    <!-- Categorias Padrão do Sistema -->
+                    
                     <div class="mb-4">
                         <h6 class="text-muted fw-bold">Categorias Globais do Sistema</h6>
                         <ul class="list-group mb-3">
@@ -136,7 +133,7 @@ $res_usuario = $mysql->query("SELECT * FROM categorias WHERE usuario_id = '$_SES
                         </ul>
                     </div>
 
-                    <!-- Categorias Personalizadas do Usuário -->
+                    
                     <div>
                         <h6 class="text-muted fw-bold">Suas Categorias Personalizadas</h6>
                         <ul class="list-group">
