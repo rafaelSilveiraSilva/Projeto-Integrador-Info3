@@ -1,5 +1,5 @@
 <?php
-include("conexao.php"); // Puxa a conexão pronta do arquivo separado
+include("conexao.php"); 
 
 if (sizeof($_POST) > 0) {
     $nome = $_POST["nome"] ?? '';
