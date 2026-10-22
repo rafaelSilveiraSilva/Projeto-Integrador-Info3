@@ -26,7 +26,7 @@ if (!$sqlTotalRecorrente) {
 // FAZ UMA QUERY NO BD PARA SOMAR OS GANHOS ESPORÁDICOS MENSAIS
 $sqlTotalEsporadico = $mysql->query("SELECT SUM(valor) AS totalEsporadico
 FROM transacaoesporadica 
-WHERE tipo = 'Ganho' AND ativo = 1 AND usuario_id = $usuario_id AND MONTH(dataDaTransacao) = MONTH(CURRENT_DATE()) AND YEAR(dataDaTransacao) = YEAR(CURRENT_DATE())");
+WHERE tipo = 'Ganho' AND ativo = 1 AND usuario_id = $usuario_id");
 
 //  SE AS QUERYS DEREM ERRO, ELE PARA A EXECUÇÃO E EXIBE O "LOG" DO ERRO
 if (!$sqlTotalEsporadico) {
