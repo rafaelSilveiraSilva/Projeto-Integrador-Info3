@@ -60,13 +60,13 @@ $ln = $rs->fetch_assoc();
 
                 <div class="row mt-5">
                     <div class="col">
-                        <a href="#" class="btn btn-secondary">Adicionar GANHO RECORRENTE</a>
+                        <a href="adicionarLancamento.php" class="btn btn-secondary">Adicionar GANHO RECORRENTE</a>
                     </div>
                 </div>
 
                 <div class="row mt-5">
                     <div class="col">
-                        <a href="#" class="btn btn-secondary">Adicionar GASTO RECORRENTE</a>
+                        <a href="adicionarLancamento.php" class="btn btn-secondary">Adicionar GASTO RECORRENTE</a>
                     </div>
                 </div>
 

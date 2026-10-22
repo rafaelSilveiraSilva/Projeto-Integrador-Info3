@@ -6,7 +6,9 @@
         </a>
         <div class="d-flex order-lg-last">
             <!-- É normal ter um erro na linha de baixo (caso tenha) -->
-            <p class="d-flex align-items-center mb-0">R$ <?= $ln["saldo"] ?></p>
+            <?php if (isset($ln['saldo'])): ?>
+                <p class="d-flex align-items-center mb-0">R$ <?= htmlspecialchars($ln['saldo']) ?></p>
+            <?php endif; ?>
             <a href="usuario.php" class="btn d-flex align-items-center">
 
 
@@ -35,9 +37,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="historicoCompleto.php">Histórico</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Opção 3</a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="lancamentos.php">Lançamentos</a>
+                </li>
 
             </ul>
         </div>
