@@ -89,7 +89,7 @@ $graph->title->Set('Gastos recorrentes por categoria');
 // CONFIGURO O EIXO X COM OS VALORES DO ARRAY CATEGORIA E O TÍTULO DE Y
 $graph->xaxis->SetTickLabels($categorias);
 $graph->xaxis->title->Set('Categorias');
-$graph->yaxis->title->Set('Porcentagem de ganhos');
+$graph->yaxis->title->Set('Porcentagem de gastos');
 
 // CRIO O TIPO DE GRÁFICO BARPLOT E ADICIONO ELE
 $barplot = new BarPlot($total);
