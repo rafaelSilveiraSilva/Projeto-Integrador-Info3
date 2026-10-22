@@ -29,7 +29,7 @@ if (!$sqlTotalGastoRecorrente) {
 // FAZ UMA QUERY NO BD PARA SOMAR OS GASTOS RECORRENTES MENSAIS
 $sqlTotalGastoEsporadico = $mysql->query("SELECT SUM(valor) AS totalEsporadico
 FROM transacaoesporadica 
-WHERE tipo = 'Gasto' AND ativo = 1 AND usuario_id = $usuario_id AND MONTH(dataDaTransacao) = MONTH(CURRENT_DATE()) AND YEAR(dataDaTransacao) = YEAR(CURRENT_DATE())");
+WHERE tipo = 'Gasto' AND ativo = 1 AND usuario_id = $usuario_id");
 
 //  SE AS QUERYS DEREM ERRO, ELE PARA A EXECUÇÃO E EXIBE O "LOG" DO ERRO
 if (!$sqlTotalGastoEsporadico) {
@@ -89,7 +89,7 @@ $graph->title->Set('Gastos recorrentes por categoria');
 // CONFIGURO O EIXO X COM OS VALORES DO ARRAY CATEGORIA E O TÍTULO DE Y
 $graph->xaxis->SetTickLabels($categorias);
 $graph->xaxis->title->Set('Categorias');
-$graph->yaxis->title->Set('Porcentagem de ganhos');
+$graph->yaxis->title->Set('Porcentagem de gastos');
 
 // CRIO O TIPO DE GRÁFICO BARPLOT E ADICIONO ELE
 $barplot = new BarPlot($total);

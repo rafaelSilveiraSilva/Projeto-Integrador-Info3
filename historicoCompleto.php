@@ -90,14 +90,16 @@ foreach ($rs2 as $line2) {
                 <table class="table table-striped table-bordered text-center">
                     <tr>
                         <th>Nome</th>
+                        <th>Categoria</th>
                         <th>Descrição</th>
                         <th>Valor</th>
 
                     </tr>
 
                     <?php
-                    $rs = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo
-                                         FROM transacaoEsporadica as te
+                    $rs = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo, c.nome as categoria
+                                        FROM transacaoEsporadica as te
+                                        JOIN categoria as c ON te.categoria_id = c.id
                                         WHERE te.usuario_id = $_SESSION[usuario]
                                         
                                         ");
@@ -114,6 +116,7 @@ foreach ($rs2 as $line2) {
                             }
                             ?>>
                             <td><?= $line["nome"] ?></td>
+                            <td><?= $line["categoria"] ?></td>
                             <td><?= $line["descricao"] ?></td>
                             <td>R$ <?= $line["valor"] ?></td>
 

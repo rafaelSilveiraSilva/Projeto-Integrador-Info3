@@ -32,7 +32,7 @@ if (!$sqlTotalRecorrente) {
 // FAZ UMA QUERY NO BD PARA SOMAR OS GANHOS ESPORÁDICOS MENSAIS
 $sqlTotalEsporadico = $mysql->query("SELECT SUM(valor) AS totalEsporadico
 FROM transacaoesporadica 
-WHERE tipo = 'Ganho' AND ativo = 1 AND usuario_id = $usuario_id AND MONTH(dataDaTransacao) = MONTH(CURRENT_DATE()) AND YEAR(dataDaTransacao) = YEAR(CURRENT_DATE())");
+WHERE tipo = 'Ganho' AND ativo = 1 AND usuario_id = $usuario_id");
 
 // SE AS QUERYS DEREM ERRO, ELE PARA A EXECUÇÃO E EXIBE O "LOG" DO ERRO
 if (!$sqlTotalEsporadico) {
@@ -59,7 +59,7 @@ $ganhosTotaisMes = $rsRecorrente['totalRecorrente'] + $rsEsporadico['totalEspora
 // FAZ UMA QUERY PARA PEGAR OS GANHOS POR CATEGORIA NO MÊS ATUAL
 $rsPlot = $mysql->query("SELECT SUM(te.valor) as totalCat, c.nome as nomeCategoria
 FROM transacaoesporadica te JOIN categoria c ON te.categoria_id = c.id 
-WHERE te.usuario_id = $usuario_id AND te.tipo = 'Ganho' AND te.ativo = 1 AND MONTH(te.dataDaTransacao) = MONTH(CURRENT_DATE()) AND YEAR(te.dataDaTransacao) = YEAR(CURRENT_DATE())
+WHERE te.usuario_id = $usuario_id AND te.tipo = 'Ganho' AND te.ativo = 1 
 GROUP BY c.nome");
 
 // SE A QUERY RSPLOT DER ERRO, ELE PARA A EXECUÇÃO E EXIBE O "LOG" DO ERRO

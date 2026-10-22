@@ -40,7 +40,7 @@
 
 
 
-    <div class="container-fluid">
+    <div class="container-fluid p-5">
 
 
         <!-- esse <div class="row mb-5 mt-5"></div> é pra dar um espaçamento pra navbar não tampar o conteúdo da página. -->
@@ -49,39 +49,46 @@
 
         <div class="row text-center mb-5 mt-4">
 
-            <h1>Bem vindo ao site!</h1>
+            <h1> Boas Vindas! </h1>
 
         </div>
 
-
-        <div class="row justify-content-center">
-
-            <div class="col text-center mb-5">
-
-
-
-            </div>
-
-        </div>
-
-
-        <div class="row p-5">
+        <div class="row">
 
             <div class="col p-4">
 
-                <h1 class="mb-4">
-                    O que é nosso site?
-                </h1>
+                <h1 class="mb-4 text-center"> O que é nosso site?</h1>
 
-                <p class="lh-lg">
-                    o projeto busca criar um sistema de organização financeira dos usuários, com foco em analisar os registros financeiros para gerar relatórios que permitam ao usuário visualizar, de forma clara e objetiva, o destino do seu próprio dinheiro, tornando possível identificar se a gestão financeira está sendo realizada de forma consciente ou descontrolada, possibilitando a adoção de medidas corretivas com base nas informações apresentadas nos relatórios.
+                <p class="lh-lg"> O projeto busca criar um sistema de organização financeira dos usuários, com foco em analisar os registros financeiros para gerar relatórios que permitam ao usuário visualizar, de forma clara e objetiva, o destino do seu próprio dinheiro, tornando possível identificar se a gestão financeira está sendo realizada de forma consciente ou descontrolada, possibilitando a adoção de medidas corretivas com base nas informações apresentadas nos relatórios. </p>
+
+                <h1 class="mb-4 text-center"> Organize seu dinheiro e planeje seu futuro! </h1>
+
+                <p class="lh-lg"> Controlar suas finanças é um passo importante para evitar gastos desnecessários e alcançar seus objetivos. Com o Webt Finance, você pode acompanhar suas receitas e despesas, entender melhor seus hábitos financeiros e planejar como utilizar seu dinheiro de maneira mais consciente. </p>
+
+                <h1 class="mb-4 text-center"> Sobre o mascote </h1>
+
+                <p class="lh-lg text-center">
+                    
+                    <img src="https://i.ibb.co/Xr4jM9KM/webt-mascote.png" width="240" class="img-fluid">
+
+                    <p class="lh-lg"> Na cultura japonesa, os sapos (kaeru) são considerados um símbolo de boa sorte e prosperidade. Assim, de forma análoga, na fauna brasileiro temos o "sapo-de-chifre", natural do Sul do Brasil, que por ser da fauna brasileira, possuir aparência marcante, e também ser um sapo, figura simbólica de de fortuna em outros locais como no Japão, aderimos ele como símbolo de nosso projeto. </p>
+                    
+                </p>
+                
+
+                <h1 class="mb-4 text-center"> Sobre o nosso orientador </h1>
+
+                <p class="lh-lg text-center">
+                    
+                    <img src="https://i.ibb.co/93Tw490C/Laerte.jpg" width="240" class="img-fluid">
+
+                    <p class="lh-lg"> Larte Mateus Rodrigues, doutor em Bioinformática pela Universidade Federal de Minas Gerais, Mestre em Informática pela Pontifícia Universidade Católica de Minas Gerais (2012), Especialista em Educação pelo Instituto Federal de Minas Gerais (2020-2021), Bacharel em Ciência da Computação pela Universidade FUMEC (2010) e Graduando em Música  com habilitação em violão erudito pela Universidade do Estado de Minas Gerais (2021-). Atualmente é professor EBTT efetivo do Instituto Federal de Minas Gerais. </p>
+                    
                 </p>
 
             </div>
 
-        </div>
-
-        <div class="row p-5">
+                <div class="row p-5">
 
             <div class="col">
 
@@ -94,7 +101,7 @@
                     <div class="col-12 col-sm-6 col-md-3 text-center">
 
                         <div>
-                            <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
+                            <img src="https://i.ibb.co/mC8jjPpY/arthur.jpg" width="240" class="img-fluid">
                         </div>
 
                         <div>
@@ -107,7 +114,7 @@
                     <div class="col-12 col-sm-6 col-md-3 text-center">
 
                         <div>
-                            <img src="https://i.ibb.co/dsC5Ldsp/bernardo.png" width="240" class="img-fluid">
+                            <img src="https://i.ibb.co/xSGpGNvT/bernas.jpg" width="240" class="img-fluid">
                         </div>
 
                         <div>
@@ -120,7 +127,7 @@
                     <div class="col-12 col-sm-6 col-md-3 text-center">
 
                         <div class="foto-equipe">
-                            <img src="https://i.ibb.co/YrKyLL2/eliasbonito-1.png" width="240" class="img-fluid">
+                            <img src="https://i.ibb.co/JjcyCs08/elias.jpg" width="240" class="img-fluid">
                         </div>
 
                         <div>
@@ -146,7 +153,7 @@
                     <div class="col-12 col-sm-6 col-md-3 text-center">
 
                         <div>
-                            <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
+                            <img src="https://i.ibb.co/Y40t66ZS/sheng.jpg" width="240" class="img-fluid">
                         </div>
 
                         <div>
@@ -159,7 +166,7 @@
                     <div class="col-12 col-sm-6 col-md-3 text-center">
 
                         <div>
-                            <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
+                            <img src="https://i.ibb.co/XrWxhL21/richard.jpg" width="240" class="img-fluid">
                         </div>
 
                         <div>
@@ -172,7 +179,7 @@
                     <div class="col-12 col-sm-6 col-md-3 text-center">
 
                         <div>
-                            <img src="https://i.ytimg.com/vi/mcb-4Y9msao/sddefault.jpg" width="240" class="img-fluid">
+                            <img src="https://i.ibb.co/mVwydSJq/Yank.png" width="240" class="img-fluid">
                         </div>
 
                         <div>
@@ -181,21 +188,100 @@
 
                     </div>
 
+
+                    <p class="lh-lg" >Somos sete integrantes do curso técnico integrado em informática do Instituto Federal de Minas Gerais campus Ribeirão das Neves, unidos pelo objetivo de desenvolver o Webt Finance, um site para organização das finanças pessoais. Trabalhamos em conjunto na pesquisa, no planejamento e na implementação do sistema, dividindo as tarefas entre a definição das funcionalidades, a elaboração do DER e a modelagem do projeto, aplicando os conhecimentos adquiridos durante o curso.</p>
+
                 </div>
 
                 <div class="row p-5">
 
                     <div class="col p-4">
 
-                        <p class="lh-lg">
-                            o projeto busca criar um sistema de organização financeira dos usuários, com foco em analisar os registros financeiros para gerar relatórios que permitam ao usuário visualizar, de forma clara e objetiva, o destino do seu próprio dinheiro, tornando possível identificar se a gestão financeira está sendo realizada de forma consciente ou descontrolada, possibilitando a adoção de medidas corretivas com base nas informações apresentadas nos relatórios.
-                        </p>
+                    </div>
 
+                </div>
+            
+
+        </div>
+
+        <div class="text-center mb-4">
+
+            <h2 class="fw-bold"> Como utilizar o o Webt Finance? </h2>
+
+            <p class="text-secondary"> Recursos para acompanhar sua vida financeira em um só lugar. </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-12 col-md-4">
+
+                <div class="card h-100 border-0 shadow-sm">
+
+                    <div class="card-body p-4 text-center">
+
+                        <div class="fs-1 mb-3"> 💰 </div>
+
+                        <h3 class="h5 fw-bold"> Controle de receitas e despesas </h3>
+
+                        <p class="card-text"> Registre o dinheiro que entra e sai para manter suas movimentações organizadas. </p>
 
                     </div>
 
                 </div>
+
             </div>
+
+            <div class="col-12 col-md-4">
+
+                <div class="card h-100 border-0 shadow-sm">
+
+                    <div class="card-body p-4 text-center">
+
+                        <div class="fs-1 mb-3"> 📊 </div>
+
+                        <h3 class="h5 fw-bold"> Relatórios financeiros </h3>
+
+                        <p class="card-text"> Consulte as informações registradas e visualize melhor como seu dinheiro está sendo utilizado. </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-4">
+
+                <div class="card h-100 border-0 shadow-sm">
+
+                    <div class="card-body p-4 text-center">
+
+                        <div class="fs-1 mb-3"> 📅 </div>
+
+                        <h3 class="h5 fw-bold"> Planejamento </h3>
+
+                        <p class="card-text"> Acompanhe parcelas e vencimentos e consulte previsões para se planejar melhor. </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="p-4 p-md-5 text-center">
+
+            <h2 class="fw-bold mb-3"> Crie sua conta agora! </h2>
+
+            <a href="cadastro.php" class="btn btn-dark btn-lg"> Criar minha conta </a>
+
+
+            <a href="login.php" class="btn btn-outline-dark btn-lg"> Já tenho uma conta </a>
+
+        </div>
+
+        </div>
+
+    
 </body>
 
 </html>
