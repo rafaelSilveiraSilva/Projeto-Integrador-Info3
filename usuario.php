@@ -56,11 +56,7 @@ $ln = $rs->fetch_assoc();
                     <b>Logout</b>
                 </a>
 
-                <a class="btn btn-danger mt-3"
-                    href="deletarConta.php?>"
-                    onclick="return confirm('ATENÇÃO: Tem certeza que deseja DELETAR sua conta? Esta ação não pode ser desfeita!');">
-                    <b>Deletar conta</b>
-                </a>
+                
 
 
 
