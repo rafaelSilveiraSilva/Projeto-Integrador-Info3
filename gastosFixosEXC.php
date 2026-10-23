@@ -8,14 +8,11 @@ $mysql = new mysqli(
     3306
 );
 
-$rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
-$ln = $rs->fetch_assoc();
-
 $id = $_GET['id'];
 
-$rs2 = $mysql->query("SELECT * FROM transacaorecorrente WHERE id = $id");
+$rs = $mysql->query("SELECT * FROM transacaorecorrente WHERE id = $id");
 
-if($rs2->num_rows == 0) {
+if($rs->num_rows == 0) {
     $err = "Registro não existe";
 }else{
     
@@ -35,7 +32,6 @@ if($rs2->num_rows == 0) {
 </head>
 
 <body>
-    <?php include 'navbar.php' ?>
 
     <div class="row mb-5 mt-5"></div>
 
