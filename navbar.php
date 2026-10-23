@@ -40,6 +40,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="lancamentos.php">Lançamentos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="criarCategoria.php">Criar Categoria</a>
+                </li>
 
             </ul>
         </div>

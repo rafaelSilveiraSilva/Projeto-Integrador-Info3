@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param('s', $nome);
             $stmt->execute();
             $stmt->close();
-            header('Location: lancamentos.php?categoria_sucesso=1');
+            header('Location: inicialUsuario.php');
             exit();
         }
     }
@@ -40,14 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Webt Finance - Criar categoria</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css">
 </head>
+
 <body class="bg-light">
     <?php include 'navbar.php'; ?>
+    
     <main class="container py-5 mt-5">
         <div class="card border-0 shadow-sm mx-auto" style="max-width: 560px;">
             <div class="card-body p-4">
@@ -60,11 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form method="post">
                     <label for="nome" class="form-label">Nome da categoria</label>
                     <input type="text" id="nome" name="nome" class="form-control mb-3"
-                           maxlength="100" placeholder="Ex.: Academia" required>
+                        maxlength="100" placeholder="Ex.: Academia" required>
                     <button type="submit" class="btn btn-warning">Criar Categoria</button>
                 </form>
             </div>
         </div>
     </main>
 </body>
+
 </html>
