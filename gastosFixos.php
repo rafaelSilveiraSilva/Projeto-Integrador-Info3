@@ -11,14 +11,11 @@ $mysql = new mysqli(
 $rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
 $ln = $rs->fetch_assoc();
 
-
 $rs2 = $mysql->query("SELECT te.id, te.nome, te.valor, te.descricao, te.tipo, te.diaVencimento, c.nome AS categoria_nome
                       FROM transacaoRecorrente AS te
                       JOIN categoria AS c ON te.categoria_id = c.id
                       WHERE te.usuario_id = $_SESSION[usuario]
                       ORDER BY te.diaVencimento ASC");
-
-
 
 ?>
 
@@ -45,7 +42,7 @@ $rs2 = $mysql->query("SELECT te.id, te.nome, te.valor, te.descricao, te.tipo, te
                 <h3><b>Transações Recorrentes</b></h3>
             </div>
             <div class="col-6 text-end">
-                <h4><b>Saldo Atual:</b> R$ <?= $ln["saldo"]?></h4>
+                <h4><b>Saldo Atual:</b> R$ <?= $ln["saldo"] ?></h4>
             </div>
         </div>
 
@@ -60,30 +57,42 @@ $rs2 = $mysql->query("SELECT te.id, te.nome, te.valor, te.descricao, te.tipo, te
                             <th>Vencimento</th>
                             <th>Tipo</th>
                             <th>Valor</th>
-                            <th></th>
+                            <th>Ação de Excluir</th>
                         </tr>
-                            
-                        <?php 
-                            if ($rs2->num_rows > 0) {
-                                while($transacao = $rs2->fetch_assoc()) {
+                        <?php
+                        $rs = $mysql->query("SELECT te.id, te.nome, te.valor, te.descricao, te.tipo, te.diaVencimento, c.nome AS categoria_nome
+                                                    FROM transacaoRecorrente AS te
+                                                    JOIN categoria AS c ON te.categoria_id = c.id
+                                                    WHERE te.usuario_id = $_SESSION[usuario]
+                                                    ORDER BY te.diaVencimento ASC");
+
+                        if ($rs->num_rows > 0) {
+                            while ($transacao = $rs->fetch_assoc()) {
                         ?>
-                            <tr>
-                                <td><?= $transacao['nome'] ?></td>
-                                <td><?= $transacao['categoria_nome'] ?></td>
-                                <td><?= $transacao['descricao'] ?></td>
-                                <td>Dia <?= $transacao['diaVencimento'] ?></td>
-                                <td> <?= $transacao['tipo'] ?> </td>
-                                <td>R$ <?= $transacao['valor'] ?> </td>
-                                <td>
-                                    <a href="gastosFixosEXC.php?id=<?= $transacao['id'] ?>">Excluir</a>
-                                </td>
-                            </tr>
+                                <!-- Linha colorida dinamicamente conforme o tipo -->
+                                <tr <?php 
+                                    if ($transacao["tipo"] == "Ganho") {
+                                        echo "class='table-success'";
+                                    } else {
+                                        echo "class='table-danger'";
+                                    }
+                                ?>>
+                                    <td><?= $transacao['nome'] ?></td>
+                                    <td><?= $transacao['categoria_nome'] ?></td>
+                                    <td><?= $transacao['descricao'] ?></td>
+                                    <td>Dia <?= $transacao['diaVencimento'] ?></td>
+                                    <td><?= $transacao['tipo'] ?></td>
+                                    <td>R$ <?= $transacao['valor'] ?></td>
+                                    <td>
+                                        <a href="gastosFixosEXC.php?id=<?= $transacao['id'] ?>">Excluir</a>
+                                    </td>
+                                </tr>
                         <?php 
                             }
                         } else {
                         ?>
                             <tr>
-                                <td colspan="8" class="text-center "> <b>Nenhuma transação recorrente cadastrada.</b></td>
+                                <td colspan="7"><b>Nenhuma transação recorrente cadastrada.</b></td>
                             </tr>
                         <?php } ?>
                     </table>
