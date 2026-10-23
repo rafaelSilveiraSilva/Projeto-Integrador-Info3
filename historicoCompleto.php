@@ -7,6 +7,8 @@ $mysql = new mysqli(
     "pi_iii", // Nome do banco de dados
     3306 // Porta utilizada
 );
+
+
 $rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
 $ln = $rs->fetch_assoc();
 $diff = 0;
@@ -14,8 +16,8 @@ $diff = 0;
 // =-=
 
 $rs2 = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo
-                                         FROM transacaoEsporadica as te
-                                        WHERE te.usuario_id = $_SESSION[usuario]
+                                        FROM transacaoEsporadica as te
+                                        WHERE te.usuario_id = $_SESSION[usuario] AND te.ativo = 1
                                         
                                         ");
 
@@ -23,10 +25,10 @@ foreach ($rs2 as $line2) {
 
 
     if ($line2["tipo"] == "Ganho") {
-        
+
         $diff += $line2["valor"];
     } else {
-       
+
         $diff -= $line2["valor"];
     }
 }
@@ -75,11 +77,11 @@ foreach ($rs2 as $line2) {
             <div class="col">
                 <?php
                 if ($diff > 0) {
-                    echo "<p>Mais ganhos do que Despesas! Parabéns!</p>";
+                    echo "<p>Mais ganho de dinheiro do que gasto! Parabéns!</p>";
                 } elseif ($diff < 0) {
-                    echo "<p>Mais gastos do que ganhos. Com ajustes, você consegue mudar isso!</p>";
+                    echo "<p>Mais gasto de dinheiro do que ganho. Com ajustes, você consegue mudar isso!</p>";
                 } else {
-                    echo "<p>Gastos e ganhos iguais! Continue caminhando para uma economia ideal!</p>";
+                    echo "<p>Nada a reclamar! Continue caminhando para uma economia ideal!</p>";
                 }
                 ?>
             </div>
@@ -93,14 +95,16 @@ foreach ($rs2 as $line2) {
                         <th>Categoria</th>
                         <th>Descrição</th>
                         <th>Valor</th>
+                        <th>Ação de Excluir</th>
+                        
 
                     </tr>
 
                     <?php
-                    $rs = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo, c.nome as categoria
+                    $rs = $mysql->query("SELECT te.nome, te.valor, te.descricao, te.tipo, c.nome as categoria, te.id
                                         FROM transacaoEsporadica as te
                                         JOIN categoria as c ON te.categoria_id = c.id
-                                        WHERE te.usuario_id = $_SESSION[usuario]
+                                        WHERE te.usuario_id = $_SESSION[usuario] AND te.ativo = 1
                                         
                                         ");
 
@@ -119,6 +123,13 @@ foreach ($rs2 as $line2) {
                             <td><?= $line["categoria"] ?></td>
                             <td><?= $line["descricao"] ?></td>
                             <td>R$ <?= $line["valor"] ?></td>
+
+                            <!-- Fazer aqui o lance de excluir -->
+                            <td>
+                                <a href="excluirEsporadico.php?id=<?= $line["id"] ?>">Excluir</a>
+                            </td>
+
+                           
 
                         </tr>
 
