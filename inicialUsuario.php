@@ -82,7 +82,7 @@ $ln = $rs->fetch_assoc();
                     <?php
                     $rs = $mysql->query("SELECT te.nome, te.valor, te.tipo
                                          FROM transacaoEsporadica as te
-                                        WHERE te.usuario_id = $_SESSION[usuario]
+                                        WHERE te.usuario_id = $_SESSION[usuario] AND te.ativo = 1
                                         ORDER BY id DESC
                                         LIMIT 10
                                         
