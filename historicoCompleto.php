@@ -105,6 +105,7 @@ foreach ($rs2 as $line2) {
                                         FROM transacaoEsporadica as te
                                         JOIN categoria as c ON te.categoria_id = c.id
                                         WHERE te.usuario_id = $_SESSION[usuario] AND te.ativo = 1
+                                        ORDER BY id DESC
                                         
                                         ");
 

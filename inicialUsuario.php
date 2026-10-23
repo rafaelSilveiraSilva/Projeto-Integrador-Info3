@@ -83,7 +83,9 @@ $ln = $rs->fetch_assoc();
                     $rs = $mysql->query("SELECT te.nome, te.valor, te.tipo
                                          FROM transacaoEsporadica as te
                                         WHERE te.usuario_id = $_SESSION[usuario]
+                                        ORDER BY id DESC
                                         LIMIT 10
+                                        
                                         ");
 
                     foreach ($rs as $ln): ?>
