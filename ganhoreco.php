@@ -1,104 +1,146 @@
 <?php
 session_start();
 
-// CONEXÃO COM O BD
 $mysql = new mysqli("localhost", "root", "", "pi_iii", 3306);
 
-// VERIFICA SE HOUVE UM ERRO NA CONEXÃO E, CASO TENHA, ELE INTERROMPE A EXECUÇÃO E MOSTRA O "LOG" DO ERRO
 if ($mysql->connect_error) {
-    die("Erro na conexão: " . $mysql->connect_error);
+    die("Erro ao conectar com o banco de dados.");
 }
 
-// VERIFICA SE O ID DO USUÁRIO ESTÁ PREENCHIDO
-if (isset($_SESSION['usuario'])) {
-    $usuario_id = (int)$_SESSION['usuario'];
-} else {
-    $usuario_id = 0;
+$mysql->set_charset("utf8mb4");
+
+if (!isset($_SESSION['usuario'])) {
+    die("Faça login para continuar.");
+}
+
+$usuario_id = $_SESSION['usuario'];
+
+$consultaUsuario = $mysql->query("SELECT * FROM usuario WHERE id = $usuario_id");
+$usuario = $consultaUsuario->fetch_assoc();
+
+$categorias = $mysql->query("SELECT * FROM categoria ORDER BY nome");
+
+$mensagem = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST["nome"];
+    $descricao = $_POST["descricao"];
+    $data = $_POST["diaVencimento"];
+    $valor = $_POST["valor"];
+    $categoria_id = $_POST["categoria"];
+    $tipo = "Ganho";
+
+    if ($nome == "" || $valor == "" || $categoria_id == "" || $data == "") {
+        $mensagem = "Preencha todos os campos obrigatórios.";
+    } elseif ($valor <= 0) {
+        $mensagem = "O valor precisa ser maior que zero.";
+    } else {
+        $sql = "INSERT INTO transacaorecorrente
+                (nome, descricao, diaVencimento, valor, tipo, categoria_id, usuario_id)
+                VALUES ('$nome', '$descricao', '$data', '$valor', '$tipo', '$categoria_id', '$usuario_id')";
+
+        if ($mysql->query($sql)) {
+            header("Location: inicialUsuario.php");
+            exit;
+        } else {
+            $mensagem = "Erro ao cadastrar. Confira o nome da tabela e das colunas.";
+        }
+    }
 }
 ?>
 
-<html>
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css" integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.min.js" integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-warning">
-        <div class="container-fluid">
-
-            <!-- logo -->
-            <a class="navbar-brand" href="inicialUsuario.php"> Webt Finance</a>
-
-            <div class="d-flex order-lg-last">
-
-
-                <a href="usuario.php" class="btn d-flex align-items-center">
-
-
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                    </svg>
-                </a>
-
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-            </div>
-
-
-
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ganho recorrente - Webt Finance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        body { background-color: #f8f9fa; }
+        .formulario { background: white; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+        .campo-titulo { font-weight: bold; }
+        .saldo-box { background: #fff3cd; border: 1px solid #ffe69c; border-radius: 14px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-warning border border-2 border-dark">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold fs-4" href="inicialUsuario.php">Webt Finance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="gastosFixos.php">Ver Fixos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Opção 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Opção 3</a>
-                    </li>
-
+                <ul class="navbar-nav ms-lg-4">
+                    <li class="nav-item"><a class="nav-link" href="gastosFixos.php">Ver Fixos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ganhocurto.php">Adicionar Ganho</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gastoreco.php">Adicionar Gasto Recorrente</a></li>
                 </ul>
             </div>
-
-
-
+            <a href="usuario.php" class="btn ms-3">Perfil</a>
         </div>
     </nav>
 
-    <div class="row mt-5">
-            
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <a href="#" class="btn btn-primary">Adicionar GANHO</a>
-                    </div>
-                </div>
-                
-                <div class="row mt-5">
-                    <div class="col">
-                        <a href="#" class="btn btn-primary">Adicionar GASTO</a>
-                    </div>
-                </div>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="formulario p-4 p-md-5">
+                    <h3 class="fw-bold mb-4">Formulário de Ganho Recorrente</h3>
 
-                <div class="row mt-5">
-                    <div class="col">
-                        <a href="ganhoreco.php" class="btn btn-secondary">Adicionar GANHO RECORRENTE</a>
-                    </div>
-                </div>
+                    <?php if ($mensagem != "") { ?>
+                        <div class="alert alert-danger"><?php echo $mensagem; ?></div>
+                    <?php } ?>
 
-                <div class="row mt-5">
-                    <div class="col">
-                        <a href="gastoreco.php" class="btn btn-secondary">Adicionar GASTO RECORRENTE</a>
-                    </div>
-                </div>
+                    <form method="POST">
+                        <div class="row g-4">
+                            <div class="col-12 col-lg-7">
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-5"><label for="nome" class="campo-titulo">Nome</label></div>
+                                    <div class="col-7"><input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required></div>
+                                </div>
 
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-5"><label for="descricao" class="campo-titulo">Descrição</label></div>
+                                    <div class="col-7"><input type="text" id="descricao" name="descricao" class="form-control" placeholder="Opcional"></div>
+                                </div>
+
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-5"><label for="valor" class="campo-titulo">Valor</label></div>
+                                    <div class="col-7"><input type="number" id="valor" name="valor" class="form-control" placeholder="100.00" min="0.01" step="0.01" required></div>
+                                </div>
+
+                                <button type="submit" class="btn btn-secondary btn-lg rounded-pill px-5 mt-2">Adicionar</button>
+                            </div>
+
+                            <div class="col-12 col-lg-5">
+                                <div class="saldo-box mb-4">
+                                    <h4 class="fw-bold">Saldo atual</h4>
+                                    <h3 class="mb-0">R$ <?php echo number_format((float) $usuario['saldo'], 2, ',', '.'); ?></h3>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="categoria" class="campo-titulo mb-2">Categoria</label>
+                                    <select id="categoria" name="categoria" class="form-select" required>
+                                        <option value="">Selecione uma categoria</option>
+                                        <?php while ($categoria = $categorias->fetch_assoc()) { ?>
+                                            <option value="<?php echo $categoria['id']; ?>"><?php echo $categoria['nome']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                <div>
+                                   <div class="col-5"><label for="diaVencimento" class="campo-titulo">Dia do Vencimento</label></div>
+                                    <div class="col-7"><input type="number" id="diaVencimento" name="diaVencimento" class="form-control" placeholder="1-31" min="1" max="31" required></div>
+                                </div>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-    </body>
+        </div>
+    </div>
+</body>
 </html>
