@@ -67,12 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Ganho curto - Webt Finance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.bundle.min.js" defer></script>
-    <style>
-        body { background-color: #f8f9fa; }
-        .formulario { background: white; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,.08); }
-        .campo-titulo { font-weight: bold; }
-        .saldo-box { background: #fff3cd; border: 1px solid #ffe69c; border-radius: 14px; padding: 20px; }
-    </style>
+   
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-warning border border-2 border-dark">
