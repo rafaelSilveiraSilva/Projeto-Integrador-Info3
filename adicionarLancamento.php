@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($stmt->execute()) {
                 $stmt->close();
-                header('Location: lancamentos.php?sucesso=1');
+                header('Location: inicialUsuario.php');
                 exit();
             }
             $erro = 'Não foi possível salvar o lançamento.';
@@ -106,7 +106,7 @@ $categorias = $mysql->query('SELECT id, nome FROM Categoria WHERE ativo = 1 ORDE
     <main class="container py-5 mt-5">
         <div class="card border-0 shadow-sm mx-auto" style="max-width: 760px;">
             <div class="card-body p-4">
-                <a href="lancamentos.php" class="btn btn-outline-secondary mb-4">Voltar</a>
+                <a href="inicialUsuario.php" class="btn btn-outline-secondary mb-4">Voltar</a>
                 <h1 class="h3 fw-bold">Adicionar lançamento</h1>
                 <p class="text-secondary">Lançamentos únicos vão para o histórico; os demais ficam como recorrentes.</p>
                 <?php if ($erro !== ''): ?>
