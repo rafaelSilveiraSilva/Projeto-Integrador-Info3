@@ -36,7 +36,7 @@ $ln = $rs->fetch_assoc();
 
             <div class="col-6 text-center">
                 <h4><b>Movimentações Recentes</b></h4>
-                <h4><i>(úitimas dez)</i></h4>
+                <h4><i>(últimas dez)</i></h4>
             </div>
 
         </div>
