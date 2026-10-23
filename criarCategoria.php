@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="container py-5 mt-5">
         <div class="card border-0 shadow-sm mx-auto" style="max-width: 560px;">
             <div class="card-body p-4">
-                <a href="lancamentos.php" class="btn btn-outline-secondary mb-4">Voltar</a>
+                <a href="inicialUsuario.php" class="btn btn-outline-secondary mb-4">Voltar</a>
                 <h1 class="h3 fw-bold">Criar Categoria</h1>
                 <p class="text-secondary">Adicione uma categoria para organizar seus lançamentos.</p>
                 <?php if ($erro !== ''): ?>
