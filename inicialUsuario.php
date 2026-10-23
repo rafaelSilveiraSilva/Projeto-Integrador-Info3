@@ -48,25 +48,25 @@ $ln = $rs->fetch_assoc();
             <div class="col">
                 <div class="row">
                     <div class="col">
-                        <a href="#" class="btn btn-primary">Adicionar GANHO</a>
+                        <a href="ganhocurto.php" class="btn btn-primary">Adicionar GANHO</a>
                     </div>
                 </div>
 
                 <div class="row mt-5">
                     <div class="col">
-                        <a href="#" class="btn btn-primary">Adicionar GASTO</a>
+                        <a href="gastosfixos.php" class="btn btn-primary">Adicionar GASTO</a>
                     </div>
                 </div>
 
                 <div class="row mt-5">
                     <div class="col">
-                        <a href="adicionarLancamento.php" class="btn btn-secondary">Adicionar GANHO RECORRENTE</a>
+                        <a href="ganhocurto.php" class="btn btn-secondary">Adicionar GANHO RECORRENTE</a>
                     </div>
                 </div>
 
                 <div class="row mt-5">
                     <div class="col">
-                        <a href="adicionarLancamento.php" class="btn btn-secondary">Adicionar GASTO RECORRENTE</a>
+                        <a href="gastoreco.php" class="btn btn-secondary">Adicionar GASTO RECORRENTE</a>
                     </div>
                 </div>
 
