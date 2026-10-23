@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-warning border border-2 border-dark">
+    <!-- <nav class="navbar navbar-expand-lg bg-warning border border-2 border-dark">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold fs-4" href="inicialUsuario.php">Webt Finance</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -80,8 +80,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <a href="usuario.php" class="btn ms-3">Perfil</a>
         </div>
-    </nav>
+    </nav> -->
+   <div class="container-fluid mt-3">
 
+        <a class="btn btn-danger" href="inicialUsuario.php">Voltar</a>
+
+    </div>
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-12 col-xl-10">

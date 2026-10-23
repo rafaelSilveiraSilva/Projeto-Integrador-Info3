@@ -61,16 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ganho curto - Webt Finance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.bundle.min.js" defer></script>
-   
+
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-warning border border-2 border-dark">
+    <!-- <nav class="navbar navbar-expand-lg bg-warning border border-2 border-dark">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold fs-4" href="inicialUsuario.php">Webt Finance</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -86,7 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <a href="usuario.php" class="btn ms-3">Perfil</a>
         </div>
-    </nav>
+    </nav> -->
+    <div class="container-fluid mt-3">
+
+        <a class="btn btn-danger" href="inicialUsuario.php">Voltar</a>
+
+    </div>
 
     <div class="container my-5">
         <div class="row justify-content-center">
@@ -136,4 +143,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </body>
+
 </html>
