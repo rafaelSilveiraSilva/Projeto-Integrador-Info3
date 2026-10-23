@@ -12,7 +12,8 @@ if ($mysql->connect_error) {
 }
 $mysql->set_charset('utf8mb4');
 $erro = '';
-
+$rs = $mysql->query("SELECT * FROM usuario WHERE id = $_SESSION[usuario] ");
+$ln = $rs->fetch_assoc();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
 
